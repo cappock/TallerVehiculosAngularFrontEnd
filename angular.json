@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "TallerVehiculosAngularFrontEnd"
+    }
+  },
+  "defaultProject": "TallerVehiculosAngularFrontEnd",
+  "cli": {
+    "analytics": "5abbe46d-8526-4968-8008-bcb9b9fd10d1"
+  }
 }
