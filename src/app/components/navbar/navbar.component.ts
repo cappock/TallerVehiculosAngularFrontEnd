@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Role, User } from 'src/app/_models';
+import { Role, Employee } from 'src/app/_models';
 import { AuthenticationService } from 'src/app/_services';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/_services';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  currentUser: User;
+  currentUser: Employee;
 
   constructor(
     private router: Router,
@@ -21,13 +21,13 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  get isAdmin() {
-    return this.currentUser && this.currentUser.role === Role.Admin;
+
+  get isManager() {
+    return this.currentUser && this.currentUser.role === Role.manager;
   }
 
   signOut() {
     this.authenticationService.signOut();
-    console.log("hola")
     this.router.navigate(['signin']);
   }
 }

@@ -6,14 +6,12 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class EmployeeService {
+
   constructor(private http: HttpClient) { }
 
-  getAll() {
-      return this.http.get<Employee[]>(`${environment.apiUrl}/users`);
+  getMe() {
+    return this.http.get<Employee>(`${environment.apiRest}/api/v1/employee/me`);
   }
 
-  getById(id: number) {
-      return this.http.get<Employee>(`${environment.apiUrl}/users/${id}`);
-  }
 }
