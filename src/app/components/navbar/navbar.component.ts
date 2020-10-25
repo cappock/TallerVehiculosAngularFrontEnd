@@ -26,6 +26,14 @@ export class NavbarComponent implements OnInit {
     return this.currentUser && this.currentUser.role === Role.manager;
   }
 
+  get isTechnician() {
+    return this.currentUser && this.currentUser.role === Role.technician;
+  }
+
+  get isAssistant() {
+    return this.currentUser && this.currentUser.role === Role.assistant;
+  }
+
   signOut() {
     this.authenticationService.signOut();
     this.router.navigate(['signin']);

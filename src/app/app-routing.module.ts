@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Role.manager] }
+    data: { roles: [Role.assistant] }
   },
   {
     path: 'profile',
