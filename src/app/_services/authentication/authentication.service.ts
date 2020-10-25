@@ -23,18 +23,12 @@ export class AuthenticationService {
   }
 
   signIn(username: string, password: string) {
-    const headers = new HttpHeaders({
-        "Content-Type":  "application/x-www-form-urlencoded",
-        "accept": "application/json"
-      })
       
     let params: URLSearchParams = new URLSearchParams();
     params.set('username', username);
     params.set('password', password);
 
-    return this.http.post<any>(`${environment.apiRest}/api/v1/login/access-token`, params.toString(), {
-        headers:  headers
-    })
+    return this.http.post<any>(`${environment.apiRest}/api/v1/login/access-token`, params.toString())
         .pipe(map(user=> {
             if (user && user.access_token) {
               let employee: Employee = new Employee;
