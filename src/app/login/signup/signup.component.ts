@@ -73,6 +73,7 @@ export class SignupComponent implements OnInit {
     employee.username = this.f.username.value;
     employee.phone = this.f.phone.value;
     employee.role = this.f.role.value;
+    employee.password = this.f.password.value;
 
     this.employeeService
       .signUp(employee)
