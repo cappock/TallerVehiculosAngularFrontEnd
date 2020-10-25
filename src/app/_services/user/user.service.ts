@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/_models';
+import { Employee } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,10 +10,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-      return this.http.get<User[]>(`${environment.apiUrl}/users`);
+      return this.http.get<Employee[]>(`${environment.apiUrl}/users`);
   }
 
   getById(id: number) {
-      return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+      return this.http.get<Employee>(`${environment.apiUrl}/users/${id}`);
   }
 }

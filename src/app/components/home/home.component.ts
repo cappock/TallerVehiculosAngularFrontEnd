@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/_models';
+import { Employee } from 'src/app/_models';
 import { AuthenticationService } from 'src/app/_services';
 
 @Component({
@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/_services';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  currentUser: User;
+  currentUser: Employee;
   constructor(
     private authenticationService: AuthenticationService
   ) {

@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarNav" *ngIf="currentUser">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/profile" routerLinkActive="active"  *ngIf="isAdmin" >Perfil</a>
+                    <a class="nav-link" routerLink="/profile" routerLinkActive="active"  >Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/signup" routerLinkActive="active"  *ngIf="isAdmin" >Registrar</a>
+                    <a class="nav-link" routerLink="/signup" routerLinkActive="active"  *ngIf="isAssistant" >Registrar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  (click)="signOut()">Logout</a>
