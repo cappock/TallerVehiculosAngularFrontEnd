@@ -1,0 +1,28 @@
+@import "src/styles/main";
+
+.login-container {
+  width: 600px;
+  height: auto;
+  padding: 40px 20px 20px 20px;
+  border: 1px solid $gray-light-color;
+
+  .form-container {
+    .title {
+      text-align: center;
+    }
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .error-container {
+    width: 100%;
+
+    p {
+      text-align: center;
+    }
+  }
+}

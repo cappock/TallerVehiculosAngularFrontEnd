@@ -1,0 +1,42 @@
+@import "../../../../styles/main";
+
+.navbar-container {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 0;
+
+  .header-container {
+    flex: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+     border-bottom: 1px solid $gray-light-color;
+
+    .title-container {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .title {
+        margin: 0 0 0 10px;
+      }
+    }
+
+    .header-image-container {
+      justify-content: center;
+      padding-left: 20px;
+
+      .header-image {
+        height: 60px;
+      }
+    }
+  }
+
+  .navbar-items {
+    flex: 50%;
+    @extend %navbar-items;
+  }
+}

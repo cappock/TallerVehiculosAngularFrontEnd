@@ -5,7 +5,7 @@ import { AuthenticationService } from 'src/app/_services';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   currentUser: Employee;
