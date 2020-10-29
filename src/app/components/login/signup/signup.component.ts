@@ -50,6 +50,10 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  onReset() {
+    this.signUpForm.reset();
+    }
+
   onSubmit(): void {
     this.submitted = true;
 

@@ -13,6 +13,6 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit(): void {
     this.authenticatedUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.authenticatedUser);
+    
   }
 }
