@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="employees-content">
+    <div class="login-container">
+      <div class="form-container">
+        <h4 class="title">Formulario de ingreso</h4>
+        <form (submit)="onSubmit()" [formGroup]="signInForm">
+          <div class="input-container">
+            <label for="username">Usuario</label>
+            <input [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="input" formControlName="username"
+              id="username" type="text" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Usuario es requerido</div>
+            </div>
+          </div>
+
+          <div class="input-container">
+            <label for="password">Contrasena</label>
+            <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="input" formControlName="password"
+              id="password" type="password" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Contrasena es requeridad</div>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <button class="btn-advice">Restaurar</button>
+            <button [disabled]="loading" class="btn-important">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Ingresar
+            </button>
+
+          </div>
+
+          <div *ngIf="error" class="error-container">
+            <p class="alert-text">{{error}}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

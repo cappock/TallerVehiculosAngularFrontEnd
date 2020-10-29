@@ -1,0 +1,192 @@
+@import "variables", "mixins";
+
+%navbar-items {
+  height: 50px;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: row;
+
+  .navbar-image-container {
+    flex: 50%;
+
+    @include mobile {
+      display: none;
+    }
+
+    .image-container {
+      box-sizing: content-box;
+      margin-top: -15px;
+      margin-left: -25px;
+      width: 100px;
+      height: 100px;
+      background-color: $blue-color;
+      border-radius: 50%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .navbar-image {
+        margin: 0;
+        width: 65px !important;
+        height: 90px !important;
+      }
+    }
+  }
+
+  .links-container {
+    height: 100%;
+    margin: 0 !important;
+    flex: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    @include mobile {
+      justify-content: center;
+    }
+
+    .item {
+      height: 50px;
+      width: 33%;
+      padding: 0 20px 0 20px;
+      text-decoration: none;
+      color: white;
+      background-color: $blue-color-2;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 1px;
+      text-align: center;
+      outline: none;
+      cursor: pointer;
+      font-size: 18px;
+
+      &.items-2 {
+        width: 50%;
+      }
+
+      &.items-3 {
+        width: 33%;
+      }
+
+      &.items-4 {
+        width: 25%;
+      }
+
+      &.active-link {
+        background-color: white;
+        color: $blue-dark-color;
+        border: 1px solid $blue-dark-color;
+      }
+
+      @include mobile {
+        height: 50px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+%input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+
+  &.checkbox {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 25px;
+
+    label {
+      margin-top: 5px;
+    }
+  }
+
+  label {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 0 !important;
+    margin-left: 10px;
+  }
+
+  .input {
+    margin: 5px 0 0 0 !important;
+    width: auto;
+    border: 1px solid $gray-light-color;
+    border-radius: 10px;
+    padding: 0 20px 0 10px !important;
+    box-sizing: border-box;
+    height: 35px !important;
+    outline: none;
+    background-color: white;
+
+    &.select {
+      background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+      -webkit-appearance: none;
+      background-position-x: calc(100% - 25px);;
+      background-color: white !important;
+    }
+
+    &.checkbox {
+      -webkit-appearance: none;
+      background-color: #fafafa;
+      border: 1px solid #cacece;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+      padding: 9px;
+      border-radius: 3px;
+      display: inline-block;
+      position: relative;
+      width: 35px !important;
+      height: 35px !important;
+
+      &:active, &:checked:active {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      &:checked {
+        background-color: #e9ecee;
+        border: 1px solid #adb8c0;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+        color: #99a1a7;
+
+        &:after {
+          content: '\2714';
+          position: absolute;
+          top: 0;
+          color: #99a1a7;
+          font-size: 28px;
+          left: 6px;
+        }
+      }
+    }
+  }
+
+  .text-error {
+    color: $red-color;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+
+%button {
+  height: 45px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px 20px !important;
+  margin: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #FFF;
+  outline: none;
+  text-shadow: 1px 1px 1px $gray-dark-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

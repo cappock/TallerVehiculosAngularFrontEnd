@@ -1,0 +1,9 @@
+<div class="employees-container">
+  <div *ngIf="!authenticatedUser" class="login-container">
+    <app-signin></app-signin>
+  </div>
+
+  <div *ngIf="authenticatedUser" class="employees-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

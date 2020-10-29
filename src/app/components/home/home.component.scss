@@ -1,0 +1,40 @@
+@import "src/styles/main";
+
+.home-container {
+  width: 100%;
+
+  .home-content {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    display: flex;
+
+    .text-container {
+      flex: 50%;
+      padding: 30px 20px 20px 80px;
+
+      p {
+        font-size: 2rem !important;
+        line-height: 2.5rem;
+        color: $gray-dark-color;
+      }
+
+      .btn-important {
+        margin-left: 0;
+      }
+    }
+
+    .image-container {
+      flex: 50%;
+
+      img {
+        position: fixed;
+        bottom: -70px;
+        right: -70px;
+        height: 600px;
+        width: 600px;
+        animation: spin-right 20s infinite linear;
+        z-index: -5000;
+      }
+    }
+  }
+}
