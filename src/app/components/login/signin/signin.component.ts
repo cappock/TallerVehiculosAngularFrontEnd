@@ -15,6 +15,7 @@ export class SigninComponent implements OnInit {
   submitted = false;
   error = '';
   authenticatedUser: any;
+  returnUrl: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,7 +25,6 @@ export class SigninComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      console.log(this.authenticationService.currentUserValue);
       this.router.navigate(['/']);
     }
   }
@@ -39,6 +39,8 @@ export class SigninComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onSubmit(): void {
@@ -54,8 +56,7 @@ export class SigninComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
-          window.location.reload();
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;

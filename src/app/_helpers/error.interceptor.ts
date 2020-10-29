@@ -8,6 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { AuthenticationService } from '../_services';
 import { catchError } from 'rxjs/operators';
+import { consoleTestResultHandler } from 'tslint/lib/test';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -21,7 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               this.authenticationService.signOut();
               location.reload(true);
           }
-          const error = err.error.message || err.statusText;
+          const error = err.error.detail || err.statusText;
           return throwError(error);
       }))
   }

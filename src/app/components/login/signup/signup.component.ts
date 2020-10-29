@@ -50,6 +50,10 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  onReset() {
+    this.signUpForm.reset();
+    }
+
   onSubmit(): void {
     this.submitted = true;
 
@@ -79,7 +83,7 @@ export class SignupComponent implements OnInit {
         (data) => {
           console.log('INGRESADO');
           alert('Ingresado Con Exito');
-          window.location.reload();
+          // window.location.reload();
           // this.router.navigate([this.returnUrl]);
         },
         (error) => {
