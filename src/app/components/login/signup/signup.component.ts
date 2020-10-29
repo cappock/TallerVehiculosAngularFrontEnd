@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
     console.log(this.f);
 
     const employee: Employee = new Employee();
-    employee.identity_card = this.f.identity_card.value;
+    employee.identity_card = this.f.identityCard.value;
     employee.email = this.f.email.value;
     employee.surnames = this.f.surnames.value;
     employee.names = this.f.names.value;
@@ -78,7 +78,9 @@ export class SignupComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log('INGRESADO');
-          this.router.navigate([this.returnUrl]);
+          alert('Ingresado Con Exito');
+          window.location.reload();
+          // this.router.navigate([this.returnUrl]);
         },
         (error) => {
           this.error = error;

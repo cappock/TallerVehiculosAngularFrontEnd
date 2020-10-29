@@ -37,7 +37,7 @@ export class AuthenticationService {
           this.currentUserSubject.next(employee);
 
           this.employeeService.getMe().subscribe(data => {
-            employee.identity_card = data.identityCard;
+            employee.identity_card = data.identity_card;
             employee.email = data.email;
             employee.surnames = data.surnames;
             employee.names = data.names;
