@@ -1,34 +1,21 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-//Components
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { SigninComponent } from './login/signin/signin.component';
-import { SignupComponent } from './login/signup/signup.component';
-import { AuthGuard } from './_helpers';
-import { Role } from './_models';
-
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './components/home/home.component';
+import {EmployeesComponent} from './components/employees/employees.component';
+import {ProfileComponent} from './components/employees/profile/profile.component';
+import {SignupComponent} from './components/login/signup/signup.component';
+import {ClientsComponent} from './components/clients/clients.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'clients', component: ClientsComponent},
   {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'signin',
-    component: SigninComponent
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [Role.assistant] }
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard]
+    path: 'employees',  component: EmployeesComponent, children: [
+      {path: '', redirectTo: '/employees/profile', pathMatch: 'full'},
+      {path: 'profile', component: ProfileComponent},
+      {path: 'register', component: SignupComponent}
+    ]
   }
 ];
 
@@ -36,4 +23,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

@@ -1,0 +1,19 @@
+@import "variables";
+
+@mixin desktop {
+  @media #{$desktop-media-query} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$tablet-media-query} {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media #{$phone-media-query} {
+    @content;
+  }
+}
