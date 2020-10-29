@@ -11,6 +11,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   getMe() {
+    console.log('hola')
     return this.http.get<Employee>(`${environment.apiRest}/api/v1/employee/me`);
   }
 

@@ -15,6 +15,7 @@ export class SigninComponent implements OnInit {
   submitted = false;
   error = '';
   authenticatedUser: any;
+  returnUrl: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +40,8 @@ export class SigninComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onSubmit(): void {
@@ -55,7 +58,7 @@ export class SigninComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          window.location.reload();
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;

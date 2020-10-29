@@ -1,6 +1,8 @@
 <div class="navbar-container">
-  <header class="header-container">
-    <div class="header-image-container">
+  <header class="header-container" (click)="activateLink('home')"
+  [ngClass]="{'active-link': activeLink === 'home'}" routerLink="/home"
+  routerLinkActive="active">
+    <div class="header-image-container" >
       <img alt="Brand" class="header-image" src="../../../../assets/images/brand-1.jpeg"/>
     </div>
     <div class="title-container">
@@ -16,13 +18,12 @@
           class="item items-3" routerLink="/employees/profile"
           routerLinkActive="active">Perfil
       </li>
-
-      <li (click)="activateLink('register')"
+        <li *ngIf="isAssistant" (click)="activateLink('register')"
           [ngClass]="{'active-link': activeLink === 'register'}"
           class="item items-3" routerLink="/employees/register"
           routerLinkActive="active">Registrar
       </li>
-
+      
       <li (click)="signOut()" class="item items-3">Salir</li>
     </ul>
   </div>

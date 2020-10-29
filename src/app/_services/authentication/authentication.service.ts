@@ -35,7 +35,7 @@ export class AuthenticationService {
           employee.token = user.access_token;
           localStorage.setItem('currentUser', JSON.stringify(employee));
           this.currentUserSubject.next(employee);
-
+          console.log('hola1')
           this.employeeService.getMe().subscribe(data => {
             employee.identity_card = data.identity_card;
             employee.email = data.email;
@@ -46,6 +46,7 @@ export class AuthenticationService {
             employee.role = data.role;
             localStorage.setItem('currentUser', JSON.stringify(employee));
             this.currentUserSubject.next(employee);
+            console.log(employee);
           });
         }
         return user;
