@@ -6,12 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
- authenticatedUser: any = null;
+
   constructor() { }
 
   ngOnInit(): void {
-    this.authenticatedUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.authenticatedUser);
+  
   }
 
 }
