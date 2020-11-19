@@ -11,7 +11,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   getMe() {
-    return this.http.get<Employee>(`${environment.apiRest}/api/v1/employee/me`);
+    return this.http.get<Employee>(`${environment.apiRest}/api/v1/employees/me`);
   }
 
   signUp(employee: Employee) {
@@ -24,7 +24,7 @@ export class EmployeeService {
 
     // params.set(JSON.stringify(employee), );
     return this.http
-      .post<any>(`${environment.apiRest}/api/v1/employee`, employee)
+      .post<any>(`${environment.apiRest}/api/v1/employees`, employee)
       .pipe(
         map((employee) => {
           if (employee) {
