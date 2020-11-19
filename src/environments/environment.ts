@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:4000',
-  apiRest: 'http://34.234.18.13'
+  apiRest: 'https://api-taller.duckdns.org'
 };
 
 /*

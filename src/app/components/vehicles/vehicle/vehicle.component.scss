@@ -1,0 +1,31 @@
+@import "src/styles/main";
+
+.vehicle-container {
+  padding: 40px 20px 20px 20px;
+
+  .form-container {
+    .title {
+      text-align: center;
+    }
+  }
+
+  .buttons-container {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    button {
+      margin: 0 10px 0 10px;
+    }
+  }
+
+  .error-container {
+    width: 100%;
+
+    p {
+      text-align: center;
+    }
+  }
+}
