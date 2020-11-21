@@ -30,7 +30,7 @@ export class VehicleService {
     .pipe(
       map((vehicle) => {
         if (vehicle) {
-          console.log('Vehiculo Ingresado Con Exito');
+          console.log('Vehicle created with success');
         }
       })
     );

@@ -80,7 +80,7 @@ export class OwnerComponent implements OnInit {
         this.ownerService.create(this.owner)
       .pipe(first())
       .subscribe(data => {
-          alert('Ingresado Con Exito');
+          alert('Created with success');
           this.routerService.redirectEmployees(`owner/${this.owner.identity_card}`)
           this.loading = false;
         },
@@ -94,7 +94,7 @@ export class OwnerComponent implements OnInit {
     this.ownerService.update(this.owner)
     .pipe(first())
     .subscribe(data => {
-        alert('Actualizado Con Exito');        
+        alert('Update with success');        
         this.loading = false;
       },
       (error) => {

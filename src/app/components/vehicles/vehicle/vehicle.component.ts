@@ -90,7 +90,7 @@ export class VehicleComponent implements OnInit {
         .pipe(first())
         .subscribe(
           (data) => {
-            alert('Ingresado Con Exito');
+            alert('Created with success');
             this.routerService.redirectEmployees(`vehicle/${this.vehicle.plate}`)
             this.loading = false;
           },
@@ -107,7 +107,7 @@ export class VehicleComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          alert('Actualizado Con Exito');
+          alert('Update with success');
           this.loading = false;
         },
         (error) => {

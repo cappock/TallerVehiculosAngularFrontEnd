@@ -13,7 +13,7 @@ export class AuthOwnerService {
   public currentOwner: Observable<Owner>;
   private currentOwnerSubject: BehaviorSubject<Owner>;
 
-  constructor(private http: HttpClient, private ownerService: OwnerService) {
+  constructor(private http: HttpClient) {
     this.currentOwnerSubject = new BehaviorSubject<Owner>(JSON.parse(localStorage.getItem('currentOwner')));
     this.currentOwner = this.currentOwnerSubject.asObservable();
   }

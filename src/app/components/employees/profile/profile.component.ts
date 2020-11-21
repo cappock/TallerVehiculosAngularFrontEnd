@@ -12,7 +12,6 @@ export class ProfileComponent implements OnInit {
   currentUser: Employee;
 
   constructor(
-    private routerService: RouterService,
     private authenticationService: AuthenticationService
   ) {
     this.authenticationService.currentUser.subscribe(

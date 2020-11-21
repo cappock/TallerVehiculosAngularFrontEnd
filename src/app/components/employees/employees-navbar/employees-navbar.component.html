@@ -16,15 +16,15 @@
       <li (click)="activateLink('profile')"
           [ngClass]="{'active-link': activeLink === 'profile'}"
           class="item items-3" routerLink="/employees/profile"
-          routerLinkActive="active">Perfil
+          routerLinkActive="active">Profile
       </li>
         <li *ngIf="isAssistant" (click)="activateLink('register')"
           [ngClass]="{'active-link': activeLink === 'register'}"
           class="item items-3" routerLink="/employees/register"
-          routerLinkActive="active">Registrar
+          routerLinkActive="active">SignUp
       </li>
       
-      <li (click)="signOut()" class="item items-3">Salir</li>
+      <li (click)="signOut()" class="item items-3">Log Out</li>
     </ul>
   </div>
 </div>
