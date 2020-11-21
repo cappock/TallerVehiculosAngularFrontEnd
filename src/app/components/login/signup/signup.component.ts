@@ -74,8 +74,7 @@ export class SignupComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          console.log('INGRESADO');
-          alert('Ingresado Con Exito');
+          alert('Sign Up with succes');
           this.loading = false;
           // window.location.reload();
           // this.router.navigate([this.returnUrl]);

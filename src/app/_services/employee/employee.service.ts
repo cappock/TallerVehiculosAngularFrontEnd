@@ -28,7 +28,7 @@ export class EmployeeService {
       .pipe(
         map((employee) => {
           if (employee) {
-            console.log('INGRESADO');
+            console.log('SignUp Employee');
           }
         })
       );

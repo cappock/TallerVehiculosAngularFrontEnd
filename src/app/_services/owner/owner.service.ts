@@ -29,7 +29,7 @@ export class OwnerService {
     .pipe(
       map((owner) => {
         if (owner) {
-          console.log('Propietario Ingresado Con Exito');
+          console.log('Owner Created with success');
         }
       })
     );
@@ -41,7 +41,7 @@ export class OwnerService {
     .pipe(
       map((owner) => {
         if (owner) {
-          console.log('Propietario Actualizado Con Exito');
+          console.log('Owner Update with success');
         }
       })
     );
