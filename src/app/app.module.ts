@@ -17,6 +17,12 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {HomeNavbarComponent} from './components/home/home-navbar/home-navbar.component';
 import {ClientsComponent} from './components/clients/clients.component';
 import {EmployeesComponent} from './components/employees/employees.component';
+import { VehicleComponent } from './components/vehicles/vehicle/vehicle.component';
+import { OwnersListComponent } from './components/vehicles/owners-list/owners-list.component';
+import { MatCardModule } from '@angular/material/card';
+import { VehiclesListComponent } from './components/vehicles/vehicles-list/vehicles-list.component';
+import { OwnerComponent } from './components/owners/owner/owner.component';
+  
 
 @NgModule({
   declarations: [
@@ -29,6 +35,11 @@ import {EmployeesComponent} from './components/employees/employees.component';
     EmployeesComponent,
     HomeNavbarComponent,
     ClientsComponent,
+    VehicleComponent,
+    OwnersListComponent,
+    VehiclesListComponent,
+    OwnerComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,8 @@ import {EmployeesComponent} from './components/employees/employees.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),    
+    MatCardModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

@@ -11,7 +11,7 @@
             <div *ngIf="f.username.errors.required">username is Required</div>
           </div>
         </div>
-
+        
         <div class="col input-container">
           <label for="password">Contraseña</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="input"
@@ -73,11 +73,11 @@
         </div>
 
         <div class="col input-container">
-          <label for="identityCard">Número de identidad</label>
-          <input [ngClass]="{ 'is-invalid': submitted && f.identityCard.errors }" class="input"
-                 formControlName="identityCard" id="identityCard" placeholder="identity card" type="text"/>
-          <div *ngIf="submitted && f.identityCard.errors" class="invalid-feedback">
-            <div *ngIf="f.identityCard.errors.required">Id is Required</div>
+          <label for="identity_card">Número de identidad</label>
+          <input [ngClass]="{ 'is-invalid': submitted && f.identity_card.errors }" class="input"
+                 formControlName="identity_card" id="identity_card" placeholder="identity card" type="text"/>
+          <div *ngIf="submitted && f.identity_card.errors" class="invalid-feedback">
+            <div *ngIf="f.identity_card.errors.required">Id is Required</div>
           </div>
         </div>
       </div>
@@ -89,7 +89,6 @@
           Registrarse
         </button>
       </div>
-
       <div *ngIf="error" class="error-container"><p class="alert-text">{{error}}</p></div>
     </form>
   </div>

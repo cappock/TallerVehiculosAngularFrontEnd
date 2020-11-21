@@ -25,4 +25,11 @@ export class RouterService {
       this.router.navigate([route]);
     });
   }
+  
+  reload(){
+    const route =  this.router.url;
+    this.zone.run(() => {
+      this.router.navigate([route]);
+    });
+  }
 }
