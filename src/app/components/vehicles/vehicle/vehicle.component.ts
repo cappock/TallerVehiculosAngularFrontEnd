@@ -1,9 +1,6 @@
 import {
   Component,
-  OnChanges,
   OnInit,
-  SimpleChanges,
-  Input,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +10,7 @@ import { VehicleService } from 'src/app/_services/vehicle/vehicle.service';
 
 import { RouterService } from 'src/app/_services/router.service';
 import { ThrowStmt } from '@angular/compiler';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-vehicle',
@@ -64,6 +62,10 @@ export class VehicleComponent implements OnInit {
           color: [this.vehicle.color, Validators.required],
           vehicle_type: [this.vehicle.vehicle_type, Validators.required],
         });
+      }, 
+      (error : any) => {
+        this.routerService.redirectEmployees(`vehicle`);        
+        alert('Vehicle Not Found');
       });
     }
     this.vehicleForm.disable();

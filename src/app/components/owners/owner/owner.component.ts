@@ -45,7 +45,11 @@ export class OwnerComponent implements OnInit {
           phone: [this.owner.phone, Validators.required],
           email: [this.owner.email, Validators.required]
         });
-      })
+      }, 
+      (error : any) => {
+        this.routerService.redirectEmployees(`owner`);        
+        alert('Owner not Found');
+      });
     }
     this.ownerForm = this.formBuilder.group({
       identity_card: [this.owner.identity_card, Validators.required],
