@@ -24,7 +24,7 @@ export class EmployeeService {
 
     // params.set(JSON.stringify(employee), );
     return this.http
-      .post<any>(`${environment.apiRest}/api/v1/employee`, employee)
+      .post<any>(`${environment.apiRest}/api/v1/employees`, employee)
       .pipe(
         map((employee) => {
           if (employee) {
