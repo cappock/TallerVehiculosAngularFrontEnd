@@ -16,7 +16,7 @@ export class VehicleService {
   }
 
   getAll(){
-    return this.http.get<Vehicle>(`${environment.apiRest}/api/v1/vehicles`);
+    return this.http.get<Array<Vehicle>>(`${environment.apiRest}/api/v1/vehicles`);
   }
 
   search(string: string){

@@ -4,6 +4,7 @@ export class Owner {
     surnames: string;
     phone: string;
     email: string;
+    token?: string;
 
     fill(data){  
         if(data){

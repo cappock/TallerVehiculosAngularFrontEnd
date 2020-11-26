@@ -16,7 +16,7 @@ export class OwnerService {
   }
 
   getAll(){
-    return this.http.get<Owner>(`${environment.apiRest}/api/v1/owners`);
+    return this.http.get<Array<Owner>>(`${environment.apiRest}/api/v1/owners`);
   }
 
   search(string: string){

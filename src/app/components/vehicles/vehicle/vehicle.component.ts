@@ -41,7 +41,6 @@ export class VehicleComponent implements OnInit {
   ngOnInit(): void {
     this.vehicle.plate = this.route.snapshot.paramMap.get('plate');
 
-
     this.vehicleForm = this.formBuilder.group({
       plate: [this.vehicle.plate, Validators.required],
       brand: [this.vehicle.brand, Validators.required],

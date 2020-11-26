@@ -1,6 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/_models';
 import { AuthenticationService } from 'src/app/_services';
+import { EmployeeService } from 'src/app/_services/employee/employee.service';
 import { RouterService } from 'src/app/_services/router.service';
 
 @Component({
@@ -9,18 +11,18 @@ import { RouterService } from 'src/app/_services/router.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  currentUser: Employee;
+  currentUser: Employee = new Employee;
 
   constructor(
-    private authenticationService: AuthenticationService
+    private employeeService: EmployeeService
   ) {
-    this.authenticationService.currentUser.subscribe(
-      (x) => (this.currentUser = x)
-    );
+    
   }
 
   ngOnInit(): void {
-
+    this.employeeService.getMe().subscribe(data => {
+      this.currentUser.fill(data)
+      console.log(this.currentUser)
+    });
   }
-
 }

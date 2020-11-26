@@ -15,8 +15,6 @@ export class EmployeeService {
   }
 
   signUp(employee: Employee) {
-
-
     let params = new URLSearchParams();
     for (let key in employee) {
       params.set(key, employee[key]);

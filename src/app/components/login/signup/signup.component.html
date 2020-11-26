@@ -65,15 +65,18 @@
       <div class="cols-2">
         <div class="col input-container">
           <label for="role">Role</label>
-          <input [ngClass]="{ 'is-invalid': submitted && f.role.errors }" class="input" formControlName="role"
-                 id="role" placeholder="role" type="text"/>
+
+          <select class="input" (change)="changeRole($event)" formControlName="role">
+            <option value="" disabled>Choose your role</option>
+            <option *ngFor="let role of roles">{{role}}</option>
+         </select>
           <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
             <div *ngIf="f.role.errors.required">Role is Required</div>
           </div>
         </div>
 
         <div class="col input-container">
-          <label for="identity_card">Número de identidad</label>
+          <label for="identity_card">Identity Card</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.identity_card.errors }" class="input"
                  formControlName="identity_card" id="identity_card" placeholder="identity card" type="text"/>
           <div *ngIf="submitted && f.identity_card.errors" class="invalid-feedback">

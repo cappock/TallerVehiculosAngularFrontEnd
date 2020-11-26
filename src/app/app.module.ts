@@ -12,8 +12,6 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
 import {ProfileComponent} from './components/employees/profile/profile.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {HomeNavbarComponent} from './components/home/home-navbar/home-navbar.component';
 import {ClientsComponent} from './components/clients/clients.component';
 import {EmployeesComponent} from './components/employees/employees.component';
@@ -22,6 +20,12 @@ import { OwnersListComponent } from './components/vehicles/owners-list/owners-li
 import { MatCardModule } from '@angular/material/card';
 import { VehiclesListComponent } from './components/vehicles/vehicles-list/vehicles-list.component';
 import { OwnerComponent } from './components/owners/owner/owner.component';
+import { ClientVehiclesComponent } from './components/clients/client-vehicles/client-vehicles.component';
+import { ClientsNavbarComponent } from './components/clients/clients-navbar/clients-navbar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OwnersViewComponent } from './components/owners/owners-view/owners-view.component';
   
 
 @NgModule({
@@ -38,7 +42,10 @@ import { OwnerComponent } from './components/owners/owner/owner.component';
     VehicleComponent,
     OwnersListComponent,
     VehiclesListComponent,
-    OwnerComponent
+    OwnerComponent,
+    ClientVehiclesComponent,
+    ClientsNavbarComponent,
+    OwnersViewComponent
     
   ],
   imports: [
@@ -46,10 +53,11 @@ import { OwnerComponent } from './components/owners/owner/owner.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule, 
+    MatCardModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot(),    
-    MatCardModule
+    FontAwesomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

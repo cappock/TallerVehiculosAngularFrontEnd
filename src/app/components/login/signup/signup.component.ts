@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {Employee} from 'src/app/_models';
 import {EmployeeService} from 'src/app/_services/employee/employee.service';
+import { Role } from  'src/app/_models';
 
 @Component({
   selector: 'app-signup',
@@ -17,6 +18,7 @@ export class SignupComponent implements OnInit {
   returnUrl: string;
   error = '';
   employee: Employee = new Employee();
+  roles : Array<any> = Object.keys(Role);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,6 +56,11 @@ export class SignupComponent implements OnInit {
     this.signUpForm.reset();
     }
 
+  changeRole(e){
+    this.f.role.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
   onSubmit(): void {
     this.submitted = true;
 

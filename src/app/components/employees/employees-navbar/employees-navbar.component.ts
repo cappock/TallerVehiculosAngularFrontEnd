@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Employee, Role} from 'src/app/_models';
 import {AuthenticationService} from 'src/app/_services';
+import { EmployeeService } from 'src/app/_services/employee/employee.service';
 import {RouterService} from '../../../_services/router.service';
 
 @Component({
@@ -14,11 +15,10 @@ export class EmployeesNavbarComponent implements OnInit {
 
   constructor(
     private routerService: RouterService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,    
+    private employeeService: EmployeeService
   ) {
-    this.authenticationService.currentUser.subscribe(
-      (x) => (this.currentUser = x)
-    );
+    this.currentUser = this.authenticationService.currentUserValue;  
   }
 
   get isManager(): any {

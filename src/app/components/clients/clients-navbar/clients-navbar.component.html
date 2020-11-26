@@ -1,0 +1,30 @@
+<div class="navbar-container">
+    <header class="header-container" (click)="activateLink('home')"
+    [ngClass]="{'active-link': activeLink === 'home'}" routerLink="/home"
+    routerLinkActive="active">
+      <div class="header-image-container" >
+        <img alt="Brand" class="header-image" src="../../../../assets/images/brand-1.jpeg"/>
+      </div>
+      <div class="title-container">
+        <h1 class="title">Car repair</h1>
+      </div>
+    </header>
+  
+    <div class="navbar-items">
+      <div class="navbar-image-container"></div>
+      <ul class="links-container">
+        <li (click)="activateLink('profile')"
+            [ngClass]="{'active-link': activeLink === 'profile'}"
+            class="item items-3" routerLink="/clients/profile"
+            routerLinkActive="active">Profile
+        </li>
+          <li (click)="activateLink('vehicles')"
+            [ngClass]="{'active-link': activeLink === 'vehicles'}"
+            class="item items-3" routerLink="/clients/vehicles"
+            routerLinkActive="active">Vehicles
+        </li>
+        
+        <li (click)="signOut()" class="item items-3">Log Out</li>
+      </ul>
+    </div>
+  </div>
