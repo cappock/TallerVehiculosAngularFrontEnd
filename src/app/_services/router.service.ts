@@ -28,8 +28,7 @@ export class RouterService {
   
   reload(){
     const route =  this.router.url;
-    this.zone.run(() => {
-      this.router.navigate([route]);
-    });
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([route]));
   }
 }

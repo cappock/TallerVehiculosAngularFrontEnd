@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { Owner } from 'src/app/_models';
 import { RouterService } from 'src/app/_services/router.service';
 import { VehicleService } from 'src/app/_services/vehicle/vehicle.service';
 
@@ -12,7 +13,7 @@ import { VehicleService } from 'src/app/_services/vehicle/vehicle.service';
   styleUrls: ['./owners-list.component.scss'],
 })
 export class OwnersListComponent implements OnInit {
-  @Input() owners: Array<any>;
+  owners : Array<Owner>;
 
   addOwnerForm: FormGroup;
   plate: string;
@@ -33,7 +34,11 @@ export class OwnersListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.plate = this.route.snapshot.paramMap.get("plate")
+    this.plate = this.route.snapshot.paramMap.get("plate");
+    this.vehicleService.getOwners(this.plate).subscribe(owners => {
+      this.owners = owners;
+    });
+
     this.addOwnerForm = this.formBuilder.group({
       identity_card: ['', Validators.required],
     });
@@ -49,8 +54,8 @@ export class OwnersListComponent implements OnInit {
     .pipe(first())
     .subscribe(
       (data) => {
-        console.log('Propietario Eliminado Con Exito');
-        alert('Propietario Eliminado');
+        console.log('Owner Delete');
+        alert('Owner Delete');
         this.routerService.reload();
       },
       (error) => {
@@ -78,8 +83,8 @@ export class OwnersListComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          console.log('Propietario Agregado Con Exito');
-          alert('Propietario Agregado');
+          console.log('Owner Add with Succes');
+          alert('Owner Add with Succes');
           this.routerService.reload();
         },
         (error) => {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Vehicle } from 'src/app/_models';
+import { Owner, Vehicle } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,6 +21,10 @@ export class VehicleService {
 
   search(string: string){
     return this.http.get<Array<Vehicle>>(`${environment.apiRest}/api/v1/vehicles/search?${string}`);
+  }
+
+  getOwners(plate: string){
+    return this.http.get<Array<Owner>>(`${environment.apiRest}/api/v1/vehicles/${plate}/vehicles`);
   }
 
   create(vehicle: Vehicle){
@@ -51,25 +55,12 @@ export class VehicleService {
 
   addOwnerToVehicle(plate: string, identity_card: string ){
     return this.http
-    .put<any>(`${environment.apiRest}/api/v1/vehicle/add-owner?${plate}`, identity_card)
-    .pipe(
-      map((vehicle) => {
-        if (vehicle) {
-          console.log('Propietario Agregado Con Exito');
-        }
-      })
-    );
+    .post<any>(`${environment.apiRest}/api/v1/vehicles/${plate}?owner_id=${identity_card}`,'')
   }
 
   deleteOwnerOfVehicle(plate: string, identity_card: string ){
     return this.http
-    .put<any>(`${environment.apiRest}/api/v1/vehicle/delete-owner?${plate}`, identity_card)
-    .pipe(
-      map((vehicle) => {
-        if (vehicle) {
-          console.log('Propietario Eliminado Con Exito');
-        }
-      })
-    );
+    .delete<any>(`${environment.apiRest}/api/v1/owners/vehicle/${plate}/owner_id/${identity_card}`);
+    
   }
 }

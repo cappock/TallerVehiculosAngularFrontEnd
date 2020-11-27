@@ -28,7 +28,7 @@ export class AuthenticationService {
     const params: URLSearchParams = new URLSearchParams();
     params.set('username', username);
     params.set('password', password);
-
+    
     return this.http.post<any>(`${environment.apiRest}/api/v1/login/access-token`, params.toString())
       .pipe(map(user => {
         if (user && user.access_token) {

@@ -53,7 +53,6 @@ export class VehicleComponent implements OnInit {
       this.adding = false;
       this.vehicleService.getVehicle(this.vehicle.plate).subscribe((data) => {
         this.vehicle.fill(data);
-        this.vehicle.owners = [1, 2, 3, 4, 5];
         this.vehicleForm = this.formBuilder.group({
           plate: [this.vehicle.plate, Validators.required],
           brand: [this.vehicle.brand, Validators.required],
