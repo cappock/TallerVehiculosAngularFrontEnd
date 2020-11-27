@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Employee} from 'src/app/_models';
+import {Employee, Role} from 'src/app/_models';
 import {environment} from 'src/environments/environment';
 import {EmployeeService} from '../employee/employee.service';
 
@@ -18,16 +18,17 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): Employee {
+  public get currentUserValue(): Employee {   
     return this.currentUserSubject.value;
   }
+
 
   signIn(username: string, password: string): any {
 
     const params: URLSearchParams = new URLSearchParams();
     params.set('username', username);
     params.set('password', password);
-
+    
     return this.http.post<any>(`${environment.apiRest}/api/v1/login/access-token`, params.toString())
       .pipe(map(user => {
         if (user && user.access_token) {
@@ -36,12 +37,12 @@ export class AuthenticationService {
           localStorage.setItem('currentUser', JSON.stringify(employee));
           this.currentUserSubject.next(employee);
           this.employeeService.getMe().subscribe(data => {
-            employee.identity_card = data.identity_card;
-            employee.email = data.email;
-            employee.surnames = data.surnames;
-            employee.names = data.names;
-            employee.username = data.username;
-            employee.phone = data.phone;
+            // employee.identity_card = data.identity_card;
+            // employee.email = data.email;
+            // employee.surnames = data.surnames;
+            // employee.names = data.names;
+            // employee.username = data.username;
+            // employee.phone = data.phone;
             employee.role = data.role;
             localStorage.setItem('currentUser', JSON.stringify(employee));
             this.currentUserSubject.next(employee);
@@ -56,4 +57,5 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+
 }

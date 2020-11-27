@@ -2,14 +2,12 @@
 <div *ngIf="viewOwners">
     <mat-card *ngFor="let owner of owners">
         <mat-card-content>
-            
            <div>
-                Due;o {{owner}} 
-                <button class="btn btn-danger btn-sm" (click)="handlerDelete(owner)">
-                    Eliminar
+                Owner {{owner.names}}  {{owner.surnames}}  {{owner.identity_card}} 
+                <button class="btn btn-danger btn-sm" (click)="handlerDelete(owner.identity_card)">
+                    Delete
                 </button>
             </div>
-
         </mat-card-content>
     </mat-card>
     <button class="btn btn-primary btn-sm" (click)="handlerAddOwner()">Añadir Propietario</button>

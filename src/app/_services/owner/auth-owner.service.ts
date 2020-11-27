@@ -33,6 +33,7 @@ export class AuthOwnerService {
       .pipe(map(owner => {
         if (owner && owner.access_token) {
           localStorage.setItem('currentOwner', JSON.stringify(owner));
+          this.currentOwnerSubject.next(owner);
         }
         return owner;
       }));
@@ -40,9 +41,7 @@ export class AuthOwnerService {
 
   signOut(): void {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentOwner');
     this.currentOwnerSubject.next(null);
   }
-
-
 }

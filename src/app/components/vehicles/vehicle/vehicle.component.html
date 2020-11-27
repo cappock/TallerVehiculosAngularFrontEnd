@@ -61,7 +61,7 @@
             </div>
             <div *ngIf="error" class="error-container"><p class="alert-text">{{error}}</p></div>
         </form>
-        <app-owners-list *ngIf="!adding" [owners]="this.vehicle.owners"></app-owners-list>
+        <app-owners-list *ngIf="!adding"></app-owners-list>
 
     </div>
 </div>
