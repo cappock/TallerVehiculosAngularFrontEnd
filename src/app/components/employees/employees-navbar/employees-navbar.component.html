@@ -13,18 +13,29 @@
   <div class="navbar-items">
     <div class="navbar-image-container"></div>
     <ul class="links-container">
+      <li  *ngIf="isTechnician" (click)="activateLink('vehicles')"
+          [ngClass]="{'active-link': activeLink === 'vehicles'}"
+          class="item items-3" routerLink="/employees/vehicles"
+          routerLinkActive="active">Vehicles
+      </li>
+      <li *ngIf="isTechnician" (click)="activateLink('owners')"
+          [ngClass]="{'active-link': activeLink === 'owners'}"
+          class="item items-3" routerLink="/employees/owners"
+          routerLinkActive="active">Owners
+      </li>
       <li (click)="activateLink('profile')"
           [ngClass]="{'active-link': activeLink === 'profile'}"
           class="item items-3" routerLink="/employees/profile"
-          routerLinkActive="active">Perfil
-      </li>
-        <li *ngIf="isAssistant" (click)="activateLink('register')"
-          [ngClass]="{'active-link': activeLink === 'register'}"
-          class="item items-3" routerLink="/employees/register"
-          routerLinkActive="active">Registrar
+          routerLinkActive="active">Profile
       </li>
       
-      <li (click)="signOut()" class="item items-3">Salir</li>
+      <li *ngIf="isAssistant" (click)="activateLink('register')"
+          [ngClass]="{'active-link': activeLink === 'register'}"
+          class="item items-3" routerLink="/employees/register"
+          routerLinkActive="active">SignUp
+      </li>
+      
+      <li (click)="signOut()" class="item items-3">Log Out</li>
     </ul>
   </div>
 </div>

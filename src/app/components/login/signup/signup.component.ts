@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {Employee} from 'src/app/_models';
 import {EmployeeService} from 'src/app/_services/employee/employee.service';
+import { Role } from  'src/app/_models';
 
 @Component({
   selector: 'app-signup',
@@ -17,6 +18,7 @@ export class SignupComponent implements OnInit {
   returnUrl: string;
   error = '';
   employee: Employee = new Employee();
+  roles : Array<any> = Object.keys(Role);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +42,7 @@ export class SignupComponent implements OnInit {
       email: ['', Validators.required],
       phone: ['', Validators.required],
       role: ['', Validators.required],
-      identityCard: ['', Validators.required],
+      identity_card: ['', Validators.required],
     });
   }
 
@@ -54,6 +56,11 @@ export class SignupComponent implements OnInit {
     this.signUpForm.reset();
     }
 
+  changeRole(e){
+    this.f.role.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
   onSubmit(): void {
     this.submitted = true;
 
@@ -64,29 +71,23 @@ export class SignupComponent implements OnInit {
 
     this.loading = true;
 
-    console.log(this.f);
-
     const employee: Employee = new Employee();
-    employee.identity_card = this.f.identityCard.value;
-    employee.email = this.f.email.value;
-    employee.surnames = this.f.surnames.value;
-    employee.names = this.f.names.value;
-    employee.username = this.f.username.value;
-    employee.phone = this.f.phone.value;
-    employee.role = this.f.role.value;
-    employee.password = this.f.password.value;
+
+    employee.fill(this.signUpForm.value)
+
 
     this.employeeService
       .signUp(employee)
       .pipe(first())
       .subscribe(
         (data) => {
-          console.log('INGRESADO');
-          alert('Ingresado Con Exito');
+          alert('Sign Up with succes');
+          this.loading = false;
           // window.location.reload();
           // this.router.navigate([this.returnUrl]);
         },
         (error) => {
+          console.log(error)
           this.error = error;
           this.loading = false;
         }

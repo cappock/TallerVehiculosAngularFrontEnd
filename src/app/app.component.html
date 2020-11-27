@@ -1,10 +1,13 @@
 <div class="main-container">
-  <div *ngIf="!currentUser" class="login-container">
+  <div *ngIf="!isloged()" class="login-container">
     <app-home-navbar></app-home-navbar>
   </div>
   <div *ngIf="currentUser" class="login-container">
     <app-employees-navbar></app-employees-navbar>
   </div>
-
+  <div *ngIf="currentOwner" class="login-container">
+    <app-clients-navbar></app-clients-navbar>
+  </div>
   <router-outlet></router-outlet>
 </div>
+

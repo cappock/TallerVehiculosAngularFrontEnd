@@ -4,16 +4,16 @@
     <form (submit)="onSubmit()" [formGroup]="signUpForm">
       <div class="cols-2">
         <div class="col input-container">
-          <label for="username">Nombre de usuario</label>
+          <label for="username">Username</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="input"
                  formControlName="username" id="username" placeholder="username" type="text"/>
           <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">username is Required</div>
           </div>
         </div>
-
+        
         <div class="col input-container">
-          <label for="password">Contraseña</label>
+          <label for="password">Password</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="input"
                  formControlName="password" id="password" placeholder="password" type="password"/>
           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -24,7 +24,7 @@
 
       <div class="cols-2">
         <div class="col input-container">
-          <label for="names">Nombres</label>
+          <label for="names">Names</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.names.errors }" class="input" formControlName="names"
                  id="names" placeholder="name" type="text"/>
           <div *ngIf="submitted && f.names.errors" class="invalid-feedback">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col input-container">
-          <label for="surnames">Apellidos</label>
+          <label for="surnames">Surnames</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.surnames.errors }" class="input"
                  formControlName="surnames" id="surnames" placeholder="surname" type="text"/>
           <div *ngIf="submitted && f.surnames.errors" class="invalid-feedback">
@@ -44,7 +44,7 @@
 
       <div class="cols-2">
         <div class="col input-container">
-          <label for="email">Correo electrónico</label>
+          <label for="email">Email address</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="input" formControlName="email"
                  id="email" placeholder="email" type="text"/>
           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -53,7 +53,7 @@
         </div>
 
         <div class="col input-container">
-          <label for="phone">Teléfono</label>
+          <label for="phone">Phone number</label>
           <input [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" class="input" formControlName="phone"
                  id="phone" placeholder="phone" type="text"/>
           <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
@@ -64,32 +64,34 @@
 
       <div class="cols-2">
         <div class="col input-container">
-          <label for="role">Rol</label>
-          <input [ngClass]="{ 'is-invalid': submitted && f.role.errors }" class="input" formControlName="role"
-                 id="role" placeholder="role" type="text"/>
+          <label for="role">Role</label>
+
+          <select class="input" (change)="changeRole($event)" formControlName="role">
+            <option value="" disabled>Choose your role</option>
+            <option *ngFor="let role of roles">{{role}}</option>
+         </select>
           <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
             <div *ngIf="f.role.errors.required">Role is Required</div>
           </div>
         </div>
 
         <div class="col input-container">
-          <label for="identityCard">Número de identidad</label>
-          <input [ngClass]="{ 'is-invalid': submitted && f.identityCard.errors }" class="input"
-                 formControlName="identityCard" id="identityCard" placeholder="identity card" type="text"/>
-          <div *ngIf="submitted && f.identityCard.errors" class="invalid-feedback">
-            <div *ngIf="f.identityCard.errors.required">Id is Required</div>
+          <label for="identity_card">Identity Card</label>
+          <input [ngClass]="{ 'is-invalid': submitted && f.identity_card.errors }" class="input"
+                 formControlName="identity_card" id="identity_card" placeholder="identity card" type="text"/>
+          <div *ngIf="submitted && f.identity_card.errors" class="invalid-feedback">
+            <div *ngIf="f.identity_card.errors.required">Id is Required</div>
           </div>
         </div>
       </div>
 
       <div class="buttons-container">
-        <button class="btn-advice" (click)="onReset()">Restaurar</button>
+        <button class="btn-advice" (click)="onReset()">Restore</button>
         <button [disabled]="loading" class="btn-important">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Registrarse
+          Sign Up
         </button>
       </div>
-
       <div *ngIf="error" class="error-container"><p class="alert-text">{{error}}</p></div>
     </form>
   </div>

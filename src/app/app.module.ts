@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -12,11 +13,22 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
 import {ProfileComponent} from './components/employees/profile/profile.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {HomeNavbarComponent} from './components/home/home-navbar/home-navbar.component';
 import {ClientsComponent} from './components/clients/clients.component';
 import {EmployeesComponent} from './components/employees/employees.component';
+import { VehicleComponent } from './components/vehicles/vehicle/vehicle.component';
+import { OwnersListComponent } from './components/vehicles/owners-list/owners-list.component';
+import { MatCardModule } from '@angular/material/card';
+import { VehiclesListComponent } from './components/vehicles/vehicles-list/vehicles-list.component';
+import { OwnerComponent } from './components/owners/owner/owner.component';
+import { ClientVehiclesComponent } from './components/clients/client-vehicles/client-vehicles.component';
+import { ClientsNavbarComponent } from './components/clients/clients-navbar/clients-navbar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OwnersViewComponent } from './components/owners/owners-view/owners-view.component';
+import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -29,15 +41,27 @@ import {EmployeesComponent} from './components/employees/employees.component';
     EmployeesComponent,
     HomeNavbarComponent,
     ClientsComponent,
+    VehicleComponent,
+    OwnersListComponent,
+    VehiclesListComponent,
+    OwnerComponent,
+    ClientVehiclesComponent,
+    ClientsNavbarComponent,
+    OwnersViewComponent,
+    ClientsProfileComponent
+    
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule, 
+    MatCardModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot()
+    FontAwesomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

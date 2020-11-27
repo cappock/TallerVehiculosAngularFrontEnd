@@ -15,8 +15,6 @@ export class EmployeeService {
   }
 
   signUp(employee: Employee) {
-
-
     let params = new URLSearchParams();
     for (let key in employee) {
       params.set(key, employee[key]);
@@ -28,7 +26,7 @@ export class EmployeeService {
       .pipe(
         map((employee) => {
           if (employee) {
-            console.log('INGRESADO');
+            console.log('SignUp Employee');
           }
         })
       );
