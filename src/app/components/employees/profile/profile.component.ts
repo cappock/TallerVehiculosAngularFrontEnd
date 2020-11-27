@@ -22,7 +22,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getMe().subscribe(data => {
       this.currentUser.fill(data)
-      console.log(this.currentUser)
     });
   }
 }

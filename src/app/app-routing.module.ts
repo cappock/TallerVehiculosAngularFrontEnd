@@ -14,17 +14,18 @@ import { ClientVehiclesComponent } from './components/clients/client-vehicles/cl
 import { ClientsGuard } from './_helpers/clients.guard';
 import { VehiclesListComponent } from './components/vehicles/vehicles-list/vehicles-list.component';
 import { OwnersViewComponent } from './components/owners/owners-view/owners-view.component';
+import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'clientsAccess', component: ClientsComponent},
   { path: 'clients', 
-    component: ClientVehiclesComponent,
     canActivate: [ClientsGuard],
     children: [
       {path: '', redirectTo: '/clients/vehicles', pathMatch: 'full' },
-      {path: 'vehicles', component: ClientVehiclesComponent}
+      {path: 'vehicles', component: ClientVehiclesComponent},
+      {path: 'profile', component: ClientsProfileComponent}
     ]
   },
   { path: 'login', component: SigninComponent },

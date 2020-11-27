@@ -1,1 +1,19 @@
-<p>client-vehicles works!</p>
+<div class="content">
+    <h4 class="title"> My Vehicles</h4>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let vehicle of vehiclesList">
+            <mat-card class="mat-elevation-z4">
+                <mat-card-header>
+                    <mat-card-title>Plate #{{vehicle.plate}}</mat-card-title>
+                </mat-card-header>
+
+                <fa-icon [icon]="faCar" size="6x"></fa-icon>
+                <mat-card-content>
+                    <p>
+                        This {{vehicle.vehicle_type}} {{vehicle.brand}} model {{vehicle.model}} color {{vehicle.color}}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

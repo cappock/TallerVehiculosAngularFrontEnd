@@ -26,6 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OwnersViewComponent } from './components/owners/owners-view/owners-view.component';
+import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
   
 
 @NgModule({
@@ -45,7 +46,8 @@ import { OwnersViewComponent } from './components/owners/owners-view/owners-view
     OwnerComponent,
     ClientVehiclesComponent,
     ClientsNavbarComponent,
-    OwnersViewComponent
+    OwnersViewComponent,
+    ClientsProfileComponent
     
   ],
   imports: [

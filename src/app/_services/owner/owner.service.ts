@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Owner } from 'src/app/_models';
+import { Owner, Vehicle } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,6 +10,14 @@ import { environment } from 'src/environments/environment';
 export class OwnerService {
 
   constructor(private http: HttpClient) { }
+
+  getMe() {
+    return this.http.get<Owner>(`${environment.apiRest}/api/v1/owners/me`);
+  }
+
+  getMyVehicles(){
+    return this.http.get<Array<Vehicle>>(`${environment.apiRest}/api/v1/owners/vehicles`);
+  }
 
   getOwner(identity_card: string){
     return this.http.get<Owner>(`${environment.apiRest}/api/v1/owners/${identity_card}`);

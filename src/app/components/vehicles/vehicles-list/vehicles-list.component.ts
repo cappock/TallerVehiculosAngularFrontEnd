@@ -18,10 +18,7 @@ export class VehiclesListComponent implements OnInit {
   faCar = faCar;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private vehicleService: VehicleService,
-    private routerService: RouterService
+    private vehicleService: VehicleService
   ) {}
 
   ngOnInit(): void {

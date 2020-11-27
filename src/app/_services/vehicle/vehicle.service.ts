@@ -24,7 +24,7 @@ export class VehicleService {
   }
 
   getOwners(plate: string){
-    return this.http.get<Array<Owner>>(`${environment.apiRest}/api/v1/vehicles/${plate}/vehicles`);
+    return this.http.get<Array<Owner>>(`${environment.apiRest}/api/v1/vehicles/${plate}/owners`);
   }
 
   create(vehicle: Vehicle){
