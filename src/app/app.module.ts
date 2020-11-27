@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -27,7 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OwnersViewComponent } from './components/owners/owners-view/owners-view.component';
 import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
-  
+
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ClientsProfileComponent } from './components/clients/clients-profile/cl
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
