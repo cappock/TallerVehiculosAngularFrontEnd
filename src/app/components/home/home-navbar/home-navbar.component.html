@@ -1,29 +1,23 @@
 <div class="navbar-container">
-  <header class="header-container" (click)="activateLink('home')"
-    [ngClass]="{'active-link': activeLink === 'home'}" routerLink="/home"
-    routerLinkActive="active">
-    <div class="header-image-container">
-      <img alt="Brand" class="header-image" src="../../../../assets/images/brand-1.jpeg" />
-    </div>
-    <div class="title-container">
-      <h1 class="title">Car repair</h1>
-    </div>
+  <header (click)="activateLink('home')" [ngClass]="{'active-link': activeLink === 'home'}"
+          class="header-container" routerLink="/home"
+          routerLinkActive="active">
+    <img alt="Brand" class="header-image" src="../../../../assets/images/brand-1.jpeg"/>
+    <h1 class="title">Car repair</h1>
   </header>
 
-  <div class="navbar-items">
-    <div class="navbar-image-container"></div>
-    <ul class="links-container">
-      <li (click)="activateLink('clientsAccess')" [ngClass]="{'active-link': activeLink === 'clientsAccess'}" class="item items-3"
+  <ul class="links-container">
+    <li (click)="activateLink('clientsAccess')" [ngClass]="{'active-link': activeLink === 'clientsAccess'}"
+        class="item items-3"
         routerLink="/clientsAccess" routerLinkActive="active">Clients
-      </li>
+    </li>
 
-      <li (click)="activateLink('employees')" [ngClass]="{'active-link': activeLink === 'employees'}"
+    <li (click)="activateLink('employees')" [ngClass]="{'active-link': activeLink === 'employees'}"
         class="item items-3" routerLink="/employees" routerLinkActive="active">Employees
-      </li>
+    </li>
 
-      <li (click)="activateLink('about')" [ngClass]="{'active-link': activeLink === 'about'}" class="item items-3"
+    <li (click)="activateLink('about')" [ngClass]="{'active-link': activeLink === 'about'}" class="item items-3"
         routerLink="/about" routerLinkActive="active">About us
-      </li>
-    </ul>
-  </div>
+    </li>
+  </ul>
 </div>

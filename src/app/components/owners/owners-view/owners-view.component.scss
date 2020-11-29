@@ -1,9 +1,83 @@
 @import "src/styles/main";
 
-.content {
-    padding: 16px;
-}
+.owners-container {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px 10% 50px 10%;
 
-.content > mat-card {
-    width: 200px;
+  .owners-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    button {
+      fa-icon {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .owners-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .owner {
+      margin-left: 20px;
+      margin-top: 20px;
+      padding: 20px;
+      height: 330px;
+      width: 30%;
+      border: 1px solid $grey-light-color;
+      border-radius: 30px;
+
+      .owner-image {
+        height: 150px;
+        text-align: center;
+
+        img {
+          width: 150px;
+        }
+      }
+
+      .owner-text {
+        .car-brand {
+          font-size: 32px !important;
+          font-weight: bold;
+          line-height: 40px;
+          text-transform: capitalize;
+
+          span {
+            font-size: 22px;
+          }
+        }
+
+        .owner-others {
+          font-size: 22px !important;
+          text-transform: capitalize;
+        }
+
+        .owner-footer {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          margin-top: -30px;
+
+          button {
+            fa-icon {
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

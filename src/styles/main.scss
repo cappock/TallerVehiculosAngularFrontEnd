@@ -104,7 +104,7 @@ body {
 
 .btn-disabled {
   @extend %button;
-  background-color: $gray-light-color;
+  background-color: $grey-light-color;
   color: black;
 }
 
@@ -174,4 +174,10 @@ body {
 .toast-fail {
   border: 1px solid $red-color !important;
   background-color: $red-light-color !important;
+}
+
+button {
+  fa-icon {
+    margin-right: 20px;
+  }
 }

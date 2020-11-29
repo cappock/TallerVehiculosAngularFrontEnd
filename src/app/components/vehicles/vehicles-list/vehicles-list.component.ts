@@ -1,11 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Vehicle } from 'src/app/_models';
-import { RouterService } from 'src/app/_services/router.service';
-import { VehicleService } from 'src/app/_services/vehicle/vehicle.service';
-
-import { faCar } from '@fortawesome/free-solid-svg-icons';
-
+import {Component, OnInit} from '@angular/core';
+import {Vehicle} from 'src/app/_models';
+import {VehicleService} from 'src/app/_services/vehicle/vehicle.service';
+import {faEdit, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -13,13 +9,14 @@ import { faCar } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./vehicles-list.component.scss'],
 })
 export class VehiclesListComponent implements OnInit {
-  vehiclesList : Array<Vehicle> = [];
-
-  faCar = faCar;
+  vehiclesList: Array<Vehicle> = [];
+  faPlus = faPlus;
+  faEdit = faEdit;
 
   constructor(
     private vehicleService: VehicleService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.vehicleService.getAll().subscribe(vehicles => {

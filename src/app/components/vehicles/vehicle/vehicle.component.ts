@@ -1,16 +1,12 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { Vehicle } from 'src/app/_models';
-import { VehicleService } from 'src/app/_services/vehicle/vehicle.service';
+import {Component, OnInit,} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
+import {Vehicle} from 'src/app/_models';
+import {VehicleService} from 'src/app/_services/vehicle/vehicle.service';
 
-import { RouterService } from 'src/app/_services/router.service';
-import { ThrowStmt } from '@angular/compiler';
-import { error } from 'protractor';
+import {RouterService} from 'src/app/_services/router.service';
+import {faBan, faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vehicle',
@@ -19,6 +15,9 @@ import { error } from 'protractor';
 })
 export class VehicleComponent implements OnInit {
   vehicleForm: FormGroup;
+  faSave = faSave;
+  faEdit = faEdit;
+  faBan = faBan;
 
   loading = false;
   submitted = false;
@@ -36,7 +35,13 @@ export class VehicleComponent implements OnInit {
     private formBuilder: FormBuilder,
     private vehicleService: VehicleService,
     private routerService: RouterService
-  ) {}
+  ) {
+  }
+
+  // convenience getter for easy access to form fields
+  get f(): any {
+    return this.vehicleForm.controls;
+  }
 
   ngOnInit(): void {
     this.vehicle.plate = this.route.snapshot.paramMap.get('plate');
@@ -52,19 +57,19 @@ export class VehicleComponent implements OnInit {
     if (this.vehicle.plate) {
       this.adding = false;
       this.vehicleService.getVehicle(this.vehicle.plate).subscribe((data) => {
-        this.vehicle.fill(data);
-        this.vehicleForm = this.formBuilder.group({
-          plate: [this.vehicle.plate, Validators.required],
-          brand: [this.vehicle.brand, Validators.required],
-          model: [this.vehicle.model, Validators.required],
-          color: [this.vehicle.color, Validators.required],
-          vehicle_type: [this.vehicle.vehicle_type, Validators.required],
+          this.vehicle.fill(data);
+          this.vehicleForm = this.formBuilder.group({
+            plate: [this.vehicle.plate, Validators.required],
+            brand: [this.vehicle.brand, Validators.required],
+            model: [this.vehicle.model, Validators.required],
+            color: [this.vehicle.color, Validators.required],
+            vehicle_type: [this.vehicle.vehicle_type, Validators.required],
+          });
+        },
+        (error: any) => {
+          this.routerService.redirectEmployees(`vehicle`);
+          alert('Vehicle Not Found');
         });
-      }, 
-      (error : any) => {
-        this.routerService.redirectEmployees(`vehicle`);        
-        alert('Vehicle Not Found');
-      });
     }
     this.vehicleForm.disable();
     if (this.adding === true) {
@@ -89,7 +94,7 @@ export class VehicleComponent implements OnInit {
         .subscribe(
           (data) => {
             alert('Created with success');
-            this.routerService.redirectEmployees(`vehicle/${this.vehicle.plate}`)
+            this.routerService.redirectEmployees(`vehicle/${this.vehicle.plate}`);
             this.loading = false;
           },
           (error) => {
@@ -128,10 +133,5 @@ export class VehicleComponent implements OnInit {
       this.editing = false;
       this.vehicleForm.disable();
     }
-  }
-
-  // convenience getter for easy access to form fields
-  get f(): any {
-    return this.vehicleForm.controls;
   }
 }

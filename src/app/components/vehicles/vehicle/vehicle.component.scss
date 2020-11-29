@@ -1,31 +1,30 @@
 @import "src/styles/main";
 
-.vehicle-container {
-  padding: 40px 20px 20px 20px;
+.edit-vehicle-container {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px 10% 50px 10%;
 
-  .form-container {
-    .title {
-      text-align: center;
-    }
+  .title {
+    margin-top: 10px;
+    font-weight: bold;
   }
 
-  .buttons-container {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  .form {
+    margin-top: 20px;
+    padding: 20px 20px 10px 20px;
+    border: 1px solid $grey-light-color;
+    margin-bottom: 30px;
 
-    button {
-      margin: 0 10px 0 10px;
-    }
-  }
+    .buttons-container {
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
 
-  .error-container {
-    width: 100%;
-
-    p {
-      text-align: center;
+      .buttons-edit-container {
+        display: flex;
+      }
     }
   }
 }

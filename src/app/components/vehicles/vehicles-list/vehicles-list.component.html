@@ -1,22 +1,26 @@
+<div class="vehicles-container">
+  <div class="vehicles-header">
+    <p class="title">list of registered vehicles</p>
+    <button class="btn-important">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      Add new vehicle
+    </button>
+  </div>
 
-<div class="content">
-    <h4 class="title"> Vehicles</h4>
-    <h4 class="subtitle"  routerLink="/employees/vehicle" > Enter new Vehicle</h4>
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let vehicle of vehiclesList">
-            <mat-card
-                routerLink="/employees/vehicle/{{vehicle.plate}}"  class="mat-elevation-z4">
-                <mat-card-header>
-                    <mat-card-title>Plate #{{vehicle.plate}}</mat-card-title>
-                </mat-card-header>
-
-                <fa-icon [icon]="faCar" size="6x"></fa-icon>
-                <mat-card-content>
-                    <p>
-                        This {{vehicle.vehicle_type}} {{vehicle.brand}} model {{vehicle.model}} color {{vehicle.color}}
-                    </p>
-                </mat-card-content>
-            </mat-card>
+  <div class="vehicles-list">
+    <div *ngFor="let vehicle of vehiclesList" class="vehicle">
+      <div class="vehicle-image">
+        <img alt="" src="https://www.goo-net-exchange.com/common/assets/img/common/icon/toyota-allion.jpg">
+      </div>
+      <div class="vehicle-text">
+        <p class="car-brand">{{vehicle.brand}} <span>model {{vehicle.model}}</span></p>
+        <p class="vehicle-others"><span>{{vehicle.vehicle_type}}</span> <span>{{vehicle.color}}</span></p>
+        <div class="vehicle-footer">
+          <button class="btn-important" routerLink="/employees/vehicle/{{vehicle.plate}}">
+            <fa-icon [icon]="faEdit"></fa-icon> Edit
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 </div>

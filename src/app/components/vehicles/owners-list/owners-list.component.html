@@ -1,36 +1,44 @@
-<button *ngIf="!viewOwners" class="btn btn-secundary btn-sm" (click)="onClick()">Ver Propietarios</button>
-<div *ngIf="viewOwners">
+<div class="owners-container">
+  <button (click)="onClick()" *ngIf="!viewOwners" class="btn-important">Ver Propietarios</button>
+  <button *ngIf="viewOwners" (click)="onClick()" class="btn-advice">Ocultar Propietarios</button>
+
+  <div *ngIf="viewOwners">
     <mat-card *ngFor="let owner of owners">
-        <mat-card-content>
-           <div>
-                Owner {{owner.names}}  {{owner.surnames}}  {{owner.identity_card}} 
-                <button class="btn btn-danger btn-sm" (click)="handlerDelete(owner.identity_card)">
-                    Delete
-                </button>
-            </div>
-        </mat-card-content>
+      <mat-card-content>
+        <div>
+          Owner {{owner.names}}  {{owner.surnames}}  {{owner.identity_card}}
+          <button (click)="handlerDelete(owner.identity_card)" class="btn-advice">
+            Delete
+          </button>
+        </div>
+      </mat-card-content>
     </mat-card>
-    <button class="btn btn-primary btn-sm" (click)="handlerAddOwner()">Añadir Propietario</button>
+    <button *ngIf="!addingOwner" (click)="handlerAddOwner()" class="btn-important">Añadir Propietario</button>
 
     <div *ngIf="addingOwner" class="form-container">
-        <h1 class="title">Agregar Propietario</h1>
-        <form (submit)="onSubmit()" [formGroup]="addOwnerForm">
-            <div class="cols-2">
-                <div class="col input-container">
-                    <label for="plate">ID del propietario</label>
-                    <input [ngClass]="{ 'is-invalid': submitted && f.identity_card.errors }" class="input"
-                        formControlName="identity_card" id="identity_card" placeholder="ID" type="text" />
-                    <div *ngIf="submitted && f.identity_card.errors" class="invalid-feedback">
-                        <div *ngIf="f.identity_card.errors.required">El id del propietario es requerido</div>
-                    </div>
-                </div>
+      <p class="title">Agregar Propietario</p>
+
+      <form (submit)="onSubmit()" [formGroup]="addOwnerForm" class="form">
+        <div class="inputs">
+          <div class="input-container">
+            <label for="identity_card">ID del propietario</label>
+            <input [ngClass]="{ 'is-invalid': submitted && f.identity_card.errors }" class="input"
+                   formControlName="identity_card" id="identity_card" placeholder="ID" type="text"/>
+            <div *ngIf="submitted && f.identity_card.errors" class="invalid-feedback">
+              <div *ngIf="f.identity_card.errors.required">El id del propietario es requerido</div>
             </div>
+          </div>
+
+          <div class="buttons-container">
             <button [disabled]="loading" class="btn-important">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                Agregar Propietario
-              </button>
-            <div *ngIf="error" class="error-container"><p class="alert-text">{{error}}</p></div>
-        </form>
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Agregar Propietario
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="error" class="error-container"><p class="alert-text">{{error}}</p></div>
+      </form>
     </div>
-    <button class="btn btn-secundary btn-sm" (click)="onClick()">Ocultar Propietarios</button>
+  </div>
 </div>
