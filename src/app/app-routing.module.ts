@@ -8,19 +8,19 @@ import { ProfileComponent } from './components/employees/profile/profile.compone
 import { SignupComponent } from './components/login/signup/signup.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { SigninComponent } from './components/login/signin/signin.component';
-import { VehicleComponent } from './components/vehicles/vehicle/vehicle.component';
-import { OwnerComponent } from './components/owners/owner/owner.component';
+import { VehicleComponent } from './components/employees/vehicles/vehicle/vehicle.component';
+import { OwnerComponent } from './components/employees/owners/owner/owner.component';
 import { ClientVehiclesComponent } from './components/clients/client-vehicles/client-vehicles.component';
 import { ClientsGuard } from './_helpers/clients.guard';
-import { VehiclesListComponent } from './components/vehicles/vehicles-list/vehicles-list.component';
-import { OwnersViewComponent } from './components/owners/owners-view/owners-view.component';
+import { VehiclesListComponent } from './components/employees/vehicles/vehicles-list/vehicles-list.component';
+import { OwnersViewComponent } from './components/employees/owners/owners-view/owners-view.component';
 import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'clientsAccess', component: ClientsComponent},
-  { path: 'clients', 
+  { path: 'clients',
     canActivate: [ClientsGuard],
     children: [
       {path: '', redirectTo: '/clients/vehicles', pathMatch: 'full' },
@@ -45,37 +45,37 @@ const routes: Routes = [
         path: 'vehicles',
         component: VehiclesListComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.technician, Role.supervisor, Role.assistant] },
+        data: { roles: [Role.technician, Role.supervisor] },
       },
       {
         path: 'vehicle/:plate',
         component: VehicleComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.technician, Role.supervisor, Role.assistant] },
+        data: { roles: [Role.technician, Role.supervisor] },
       },
       {
         path: 'vehicle',
         component: VehicleComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.technician, Role.supervisor, Role.assistant] },
+        data: { roles: [Role.technician, Role.supervisor] },
       },
       {
         path: 'owners',
         component: OwnersViewComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.technician, Role.supervisor, Role.assistant] },
+        data: { roles: [Role.technician, Role.supervisor] },
       },
       {
         path: 'owner/:identity_card',
         component: OwnerComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.technician, Role.supervisor, Role.assistant] },
+        data: { roles: [Role.technician, Role.supervisor] },
       },
       {
         path: 'owner',
         component: OwnerComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.technician, Role.supervisor, Role.assistant] },
+        data: { roles: [Role.technician, Role.supervisor] },
       }
     ],
   },

@@ -1,0 +1,25 @@
+<div class="owners-container">
+  <div class="owners-header">
+    <p class="title">list of registered owners</p>
+    <button class="btn-important">
+      <fa-icon [icon]="faPlus"></fa-icon>Add new owner</button>
+  </div>
+
+  <div class="owners-list">
+    <div *ngFor="let owner of ownersList" class="owner">
+      <div class="owner-image">
+        <img alt="" src="../../../../../assets/images/avatar.png">
+      </div>
+      <div class="owner-text">
+        <p class="car-brand">{{owner.names}} {{owner.surnames}}</p>
+        <p class="owner-others">{{owner.email}}</p>
+        <p class="owner-others"># {{owner.identity_card}}</p>
+        <div class="owner-footer">
+          <button class="btn-important" routerLink="/employees/owner/{{owner.identity_card}}">
+            <fa-icon [icon]="faEdit"></fa-icon> Edit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

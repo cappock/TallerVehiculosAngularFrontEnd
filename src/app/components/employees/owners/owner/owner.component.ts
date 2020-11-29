@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { Owner } from 'src/app/_models';
 import { OwnerService } from 'src/app/_services/owner/owner.service';
 import { RouterService } from 'src/app/_services/router.service';
+import {faBan, faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-owner',
@@ -13,6 +14,9 @@ import { RouterService } from 'src/app/_services/router.service';
 })
 export class OwnerComponent implements OnInit {
   ownerForm: FormGroup;
+  faSave = faSave;
+  faEdit = faEdit;
+  faBan = faBan;
 
   loading = false;
   submitted = false;
@@ -45,9 +49,9 @@ export class OwnerComponent implements OnInit {
           phone: [this.owner.phone, Validators.required],
           email: [this.owner.email, Validators.required]
         });
-      }, 
+      },
       (error : any) => {
-        this.routerService.redirectEmployees(`owner`);        
+        this.routerService.redirectEmployees(`owner`);
         alert('Owner not Found');
       });
     }
@@ -63,7 +67,7 @@ export class OwnerComponent implements OnInit {
     if(this.adding === true){
       this.ownerForm.enable();
       this.editing = true;
-    }  
+    }
   }
 
 
@@ -88,13 +92,13 @@ export class OwnerComponent implements OnInit {
           console.log(error)
           this.error = error;
           this.loading = false;
-      });    
+      });
       return;
     }
     this.ownerService.update(this.owner)
     .pipe(first())
     .subscribe(data => {
-        alert('Update with success');        
+        alert('Update with success');
         this.loading = false;
       },
       (error) => {
@@ -106,7 +110,7 @@ export class OwnerComponent implements OnInit {
 
   onEdit(): void {
     this.editing = true;
-    this.ownerForm.enable();    
+    this.ownerForm.enable();
     this.f.identity_card.disable()
   }
 

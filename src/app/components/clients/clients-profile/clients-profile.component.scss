@@ -1,5 +1,42 @@
+@import "src/styles/main";
+
 .profile-container {
-    width: 80%;
-    padding: 50px 10% 50px 10%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .profile-content {
+    height: 280px;
+    width: 500px;
+    border-radius: 30px;
+    padding: 20px;
+    border: 1px solid $grey-light-color;
+
+    .profile-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .avatar-image {
+        height: 150px;
+        width: 150px;
+      }
+
+      .header-text {
+        margin-left: 30px;
+        border-bottom: 1px solid $grey-light-color;
+
+        .name {
+          font-size: 40px !important;
+        }
+      }
+    }
+
+    .profile-description {
+      margin-top: 20px;
+      text-align: center;
+    }
   }
-  
+}

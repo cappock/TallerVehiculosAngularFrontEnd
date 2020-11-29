@@ -1,13 +1,18 @@
 <div class="profile-container">
-  <p class="title">Personal Information</p>
+  <div class="profile-content">
+    <div class="profile-header">
+      <img alt="Avatar" class="avatar-image" src="assets/images/avatar.png">
+      <div class="header-text">
+        <p class="name">{{currentUser.names}} {{currentUser.surnames}}</p>
+        <p>{{currentUser.email}}</p>
+      </div>
+    </div>
 
-  <p><b>Username: </b>{{currentUser.username}}</p>
-  <p><b>Names: </b>{{currentUser.names}}</p>
-  <p><b>Surnames: </b>{{currentUser.surnames}}</p>
-  <p><b>Email Address: </b>{{currentUser.email}}</p>
-  <p><b>Phone number: </b>{{currentUser.phone}}</p>
-  <p><b>Role: </b>{{currentUser.role}}</p>
-  <p><b>Identity card: </b>{{currentUser.identity_card}}</p>
-
-  
+    <div class="profile-description">
+      <p><b>Username: </b>{{currentUser.username}}</p>
+      <p><b>Phone number: </b>{{currentUser.phone}}</p>
+      <p><b>Role: </b>{{currentUser.role}}</p>
+      <p><b>Identity card: </b>{{currentUser.identity_card}}</p>
+    </div>
+  </div>
 </div>
