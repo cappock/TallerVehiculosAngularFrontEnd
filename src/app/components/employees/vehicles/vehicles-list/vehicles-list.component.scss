@@ -1,0 +1,78 @@
+@import "../../../../../styles/main";
+
+.vehicles-container {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px 10% 50px 10%;
+
+  .vehicles-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  }
+
+  .vehicles-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .vehicle {
+      margin-left: 20px;
+      margin-top: 20px;
+      padding: 20px;
+      height: 280px;
+      width: 30%;
+      border: 1px solid $grey-light-color;
+      border-radius: 30px;
+
+      .vehicle-image {
+        height: 150px;
+        text-align: center;
+
+        img {
+          width: 300px;
+        }
+      }
+
+      .vehicle-text {
+        .car-brand {
+          font-size: 32px !important;
+          font-weight: bold;
+          line-height: 40px;
+          text-transform: capitalize;
+
+          span {
+            font-size: 22px;
+          }
+        }
+
+        .vehicle-others {
+          font-size: 22px !important;
+          text-transform: capitalize;
+          margin-top: -20px;
+
+          span {
+            &:nth-child(2) {
+              margin-left: 20px;
+            }
+          }
+        }
+
+        .vehicle-footer {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          margin-top: -30px;
+        }
+      }
+    }
+  }
+}

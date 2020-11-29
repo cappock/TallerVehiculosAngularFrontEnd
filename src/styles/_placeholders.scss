@@ -1,44 +1,37 @@
 @import "variables", "mixins";
 
-%navbar-items {
-  height: 50px;
+%navbar-container {
+  width: 100vw;
+  height: 60px;
   margin: 0 !important;
   padding: 0 !important;
   display: flex;
   flex-direction: row;
 
-  .navbar-image-container {
+  .header-container {
     flex: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid $grey-light-color;
 
-    @include mobile {
-      display: none;
+    .header-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-left: 20px;
     }
 
-    .image-container {
-      box-sizing: content-box;
-      margin-top: -15px;
-      margin-left: -25px;
-      width: 100px;
-      height: 100px;
-      background-color: $blue-color;
-      border-radius: 50%;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .navbar-image {
-        margin: 0;
-        width: 65px !important;
-        height: 90px !important;
-      }
+    .title {
+      padding-left: 20px;
+      margin-top: 15px;
     }
   }
 
   .links-container {
+    flex: 50%;
     height: 100%;
     margin: 0 !important;
-    flex: 50%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -49,7 +42,7 @@
 
     .item {
       height: 50px;
-      width: 33%;
+      width: auto;
       padding: 0 20px 0 20px;
       text-decoration: none;
       color: white;
@@ -116,7 +109,7 @@
   .input {
     margin: 5px 0 0 0 !important;
     width: auto;
-    border: 1px solid $gray-light-color;
+    border: 1px solid $grey-light-color;
     border-radius: 10px;
     padding: 0 20px 0 10px !important;
     box-sizing: border-box;
@@ -185,7 +178,7 @@
   cursor: pointer;
   color: #FFF;
   outline: none;
-  text-shadow: 1px 1px 1px $gray-dark-color;
+  text-shadow: 1px 1px 1px $grey-dark-color;
   display: flex;
   align-items: center;
   justify-content: center;

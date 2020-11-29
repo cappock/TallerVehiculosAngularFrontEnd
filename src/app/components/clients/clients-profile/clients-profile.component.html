@@ -1,11 +1,16 @@
 <div class="profile-container">
-    <p class="title">Personal Information</p>
-  
-    <p><b>Names: </b>{{currentOwner.names}}</p>
-    <p><b>Surnames: </b>{{currentOwner.surnames}}</p>
-    <p><b>Email Address: </b>{{currentOwner.email}}</p>
-    <p><b>Phone number: </b>{{currentOwner.phone}}</p>
-    <p><b>Identity card: </b>{{currentOwner.identity_card}}</p>
-  
-    
+  <div class="profile-content">
+    <div class="profile-header">
+      <img alt="Avatar" class="avatar-image" src="assets/images/avatar.png">
+      <div class="header-text">
+        <p class="name">{{currentOwner.names}} {{currentOwner.surnames}}</p>
+        <p>{{currentOwner.email}}</p>
+      </div>
+    </div>
+
+    <div class="profile-description">
+      <p><b>Phone number: </b>{{currentOwner.phone}}</p>
+      <p><b>Identity card: </b>{{currentOwner.identity_card}}</p>
+    </div>
   </div>
+</div>

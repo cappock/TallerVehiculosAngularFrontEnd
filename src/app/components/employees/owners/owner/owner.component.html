@@ -1,0 +1,71 @@
+<div class="edit-owner-container">
+  <p class="title">Edit owner</p>
+
+  <form (submit)="onSubmit()" [formGroup]="ownerForm" class="form">
+    <div class="cols-3">
+      <div class="col input-container">
+        <label for="identity_card">ID</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.identity_card.errors }" class="input"
+               formControlName="identity_card" id="identity_card" placeholder="ID" type="text"/>
+        <div *ngIf="submitted && f.identity_card.errors" class="invalid-feedback">
+          <div *ngIf="f.identity_card.errors.required">The id is required</div>
+        </div>
+      </div>
+
+      <div class="col input-container">
+        <label for="names">Names</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.names.errors }" class="input"
+               formControlName="names" id="names" placeholder="Nombre" type="text"/>
+        <div *ngIf="submitted && f.names.errors" class="invalid-feedback">
+          <div *ngIf="f.names.errors.required">Name is required</div>
+        </div>
+      </div>
+
+      <div class="col input-container">
+        <label for="surnames">Surnames</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.surnames.errors }" class="input"
+               formControlName="surnames" id="surnames" placeholder="Apellidos" type="text"/>
+        <div *ngIf="submitted && f.surnames.errors" class="invalid-feedback">
+          <div *ngIf="f.surnames.errors.required">Surname is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols-2">
+      <div class="col input-container">
+        <label for="phone">Phone number</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" class="input"
+               formControlName="phone" id="phone" placeholder="Celular" type="text"/>
+        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+          <div *ngIf="f.phone.errors.required">Phone number is required</div>
+        </div>
+      </div>
+
+      <div class="col input-container">
+        <label for="email">email</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="input"
+               formControlName="email" id="email" placeholder="email" type="text"/>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">email is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-container">
+      <button (click)="onEdit()" *ngIf="!editing" class="btn-advice">
+        <fa-icon [icon]="faEdit"></fa-icon> Edit
+      </button>
+
+      <div *ngIf="editing" class="buttons-edit-container">
+        <button (click)="onCancel()" *ngIf="!adding" class="btn-advice">
+          <fa-icon [icon]="faBan"></fa-icon> Cancel
+        </button>
+        <button [disabled]="loading" class="btn-important">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          <fa-icon [icon]="faSave"></fa-icon> Save Changes
+        </button>
+      </div>
+    </div>
+    <div *ngIf="error" class="error-container"><p class="alert-text">{{error}}</p></div>
+  </form>
+</div>

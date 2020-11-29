@@ -1,43 +1,36 @@
 <div class="navbar-container">
-  <header class="header-container" (click)="activateLink('home')"
-  [ngClass]="{'active-link': activeLink === 'home'}" routerLink="/home"
-  routerLinkActive="active">
-    <div class="header-image-container" >
-      <img alt="Brand" class="header-image" src="../../../../assets/images/brand-1.jpeg"/>
-    </div>
-    <div class="title-container">
-      <h1 class="title">Car repair</h1>
-    </div>
+  <header (click)="activateLink('home')" [ngClass]="{'active-link': activeLink === 'home'}"
+          class="header-container" routerLink="/home"
+          routerLinkActive="active">
+    <img alt="Brand" class="header-image" src="../../../../assets/images/brand-1.jpeg"/>
+    <h1 class="title">Car repair</h1>
   </header>
 
-  <div class="navbar-items">
-    <div class="navbar-image-container"></div>
-    <ul class="links-container">
-      <li  *ngIf="isTechnician" (click)="activateLink('vehicles')"
-          [ngClass]="{'active-link': activeLink === 'vehicles'}"
-          class="item items-3" routerLink="/employees/vehicles"
-          routerLinkActive="active">Vehicles
-      </li>
-      <li *ngIf="isTechnician" (click)="activateLink('owners')"
-          [ngClass]="{'active-link': activeLink === 'owners'}"
-          class="item items-3" routerLink="/employees/owners"
-          routerLinkActive="active">Owners
-      </li>
-      <li (click)="activateLink('profile')"
-          [ngClass]="{'active-link': activeLink === 'profile'}"
-          class="item items-3" routerLink="/employees/profile"
-          routerLinkActive="active">Profile
-      </li>
-      
-      <li *ngIf="isAssistant" (click)="activateLink('register')"
-          [ngClass]="{'active-link': activeLink === 'register'}"
-          class="item items-3" routerLink="/employees/register"
-          routerLinkActive="active">SignUp
-      </li>
-      
-      <li (click)="signOut()" class="item items-3">Log Out</li>
-    </ul>
-  </div>
+  <ul class="links-container">
+    <li (click)="activateLink('vehicles')" *ngIf="isTechnician"
+        [ngClass]="{'active-link': activeLink === 'vehicles'}"
+        class="item items-3" routerLink="/employees/vehicles"
+        routerLinkActive="active">Vehicles
+    </li>
+    <li (click)="activateLink('owners')" *ngIf="isTechnician"
+        [ngClass]="{'active-link': activeLink === 'owners'}"
+        class="item items-3" routerLink="/employees/owners"
+        routerLinkActive="active">Owners
+    </li>
+    <li (click)="activateLink('profile')"
+        [ngClass]="{'active-link': activeLink === 'profile'}"
+        class="item items-3" routerLink="/employees/profile"
+        routerLinkActive="active">Profile
+    </li>
+
+    <li (click)="activateLink('register')" *ngIf="isAssistant"
+        [ngClass]="{'active-link': activeLink === 'register'}"
+        class="item items-3" routerLink="/employees/register"
+        routerLinkActive="active">SignUp
+    </li>
+
+    <li (click)="signOut()" class="item items-3">Log Out</li>
+  </ul>
 </div>
 
 
