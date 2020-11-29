@@ -1,11 +1,11 @@
-@import "src/styles/main";
+@import "../../../../../styles/main";
 
-.owners-container {
+.vehicles-container {
   height: 100%;
   overflow-y: auto;
   padding: 20px 10% 50px 10%;
 
-  .owners-header {
+  .vehicles-header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,39 +14,33 @@
       margin-top: 10px;
       font-weight: bold;
     }
-
-    button {
-      fa-icon {
-        margin-right: 20px;
-      }
-    }
   }
 
-  .owners-list {
+  .vehicles-list {
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
-    .owner {
+    .vehicle {
       margin-left: 20px;
       margin-top: 20px;
       padding: 20px;
-      height: 330px;
+      height: 280px;
       width: 30%;
       border: 1px solid $grey-light-color;
       border-radius: 30px;
 
-      .owner-image {
+      .vehicle-image {
         height: 150px;
         text-align: center;
 
         img {
-          width: 150px;
+          width: 300px;
         }
       }
 
-      .owner-text {
+      .vehicle-text {
         .car-brand {
           font-size: 32px !important;
           font-weight: bold;
@@ -58,24 +52,25 @@
           }
         }
 
-        .owner-others {
+        .vehicle-others {
           font-size: 22px !important;
           text-transform: capitalize;
+          margin-top: -20px;
+
+          span {
+            &:nth-child(2) {
+              margin-left: 20px;
+            }
+          }
         }
 
-        .owner-footer {
+        .vehicle-footer {
           width: 100%;
           display: flex;
           flex-direction: row;
           justify-content: flex-end;
           align-items: center;
           margin-top: -30px;
-
-          button {
-            fa-icon {
-              margin-right: 20px;
-            }
-          }
         }
       }
     }

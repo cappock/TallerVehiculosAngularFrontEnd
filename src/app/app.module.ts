@@ -16,17 +16,17 @@ import {ProfileComponent} from './components/employees/profile/profile.component
 import {HomeNavbarComponent} from './components/home/home-navbar/home-navbar.component';
 import {ClientsComponent} from './components/clients/clients.component';
 import {EmployeesComponent} from './components/employees/employees.component';
-import { VehicleComponent } from './components/vehicles/vehicle/vehicle.component';
-import { OwnersListComponent } from './components/vehicles/owners-list/owners-list.component';
+import { VehicleComponent } from './components/employees/vehicles/vehicle/vehicle.component';
+import { OwnersListComponent } from './components/employees/vehicles/owners-list/owners-list.component';
 import { MatCardModule } from '@angular/material/card';
-import { VehiclesListComponent } from './components/vehicles/vehicles-list/vehicles-list.component';
-import { OwnerComponent } from './components/owners/owner/owner.component';
+import { VehiclesListComponent } from './components/employees/vehicles/vehicles-list/vehicles-list.component';
+import { OwnerComponent } from './components/employees/owners/owner/owner.component';
 import { ClientVehiclesComponent } from './components/clients/client-vehicles/client-vehicles.component';
 import { ClientsNavbarComponent } from './components/clients/clients-navbar/clients-navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { OwnersViewComponent } from './components/owners/owners-view/owners-view.component';
+import { OwnersViewComponent } from './components/employees/owners/owners-view/owners-view.component';
 import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
 
 
@@ -49,7 +49,7 @@ import { ClientsProfileComponent } from './components/clients/clients-profile/cl
     ClientsNavbarComponent,
     OwnersViewComponent,
     ClientsProfileComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,7 @@ import { ClientsProfileComponent } from './components/clients/clients-profile/cl
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     MatCardModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
