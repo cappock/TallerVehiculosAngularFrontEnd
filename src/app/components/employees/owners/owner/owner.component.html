@@ -1,5 +1,7 @@
 <div class="edit-owner-container">
-  <p class="title">Edit owner</p>
+  <p *ngIf="!adding"  class="title">Edit owner</p>
+  
+  <p *ngIf="adding"  class="title">Add owner</p>
 
   <form (submit)="onSubmit()" [formGroup]="ownerForm" class="form">
     <div class="cols-3">
