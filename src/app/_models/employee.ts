@@ -20,6 +20,7 @@ export class Employee {
             this.email = data.email;
             this.username = data.username;
             this.role = data.role;
+            this.password = data.password;
         }
         
     }

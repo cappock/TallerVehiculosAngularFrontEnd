@@ -21,6 +21,8 @@ export class EmployeeService {
     }
 
     // params.set(JSON.stringify(employee), );
+    console.log(employee)
+    console.log(params.toString())
     return this.http
       .post<any>(`${environment.apiRest}/api/v1/employees`, employee)
       .pipe(

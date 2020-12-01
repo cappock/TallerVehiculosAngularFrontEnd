@@ -75,6 +75,7 @@ export class SignupComponent implements OnInit {
 
     employee.fill(this.signUpForm.value)
 
+    console.log(employee)
 
     this.employeeService
       .signUp(employee)
