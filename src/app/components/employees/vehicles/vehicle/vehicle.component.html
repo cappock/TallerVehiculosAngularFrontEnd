@@ -1,5 +1,8 @@
 <div class="edit-vehicle-container">
-  <p class="title">Edit vehicle</p>
+
+  <p *ngIf="!adding"  class="title">Edit Vehicle</p>
+  
+  <p *ngIf="adding"  class="title">Add Vehicle</p>
 
   <form (submit)="onSubmit()" [formGroup]="vehicleForm" class="form">
     <div class="cols-3">

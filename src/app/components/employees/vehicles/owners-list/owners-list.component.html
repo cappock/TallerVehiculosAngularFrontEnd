@@ -1,38 +1,39 @@
 <div class="owners-container">
-  <button (click)="onClick()" *ngIf="!viewOwners" class="btn-important">Ver Propietarios</button>
-  <button *ngIf="viewOwners" (click)="onClick()" class="btn-advice">Ocultar Propietarios</button>
+  <button (click)="onClick()" *ngIf="!viewOwners" class="btn-important">View Owners</button>
+  <button *ngIf="viewOwners" (click)="onClick()" class="btn-advice">Hide Owners</button>
 
   <div *ngIf="viewOwners">
     <mat-card *ngFor="let owner of owners">
       <mat-card-content>
         <div>
-          Owner {{owner.names}}  {{owner.surnames}}  {{owner.identity_card}}
+          <p><b>Owner: </b>{{owner.names}}</p>
+          <p><b>Identity Card: </b>{{owner.identity_card}}</p>
           <button (click)="handlerDelete(owner.identity_card)" class="btn-advice">
             Delete
           </button>
         </div>
       </mat-card-content>
     </mat-card>
-    <button *ngIf="!addingOwner" (click)="handlerAddOwner()" class="btn-important">Añadir Propietario</button>
+    <button *ngIf="!addingOwner" (click)="handlerAddOwner()" class="btn-important">Add Owner</button>
 
     <div *ngIf="addingOwner" class="form-container">
-      <p class="title">Agregar Propietario</p>
+      <p class="title">Add Owner</p>
 
       <form (submit)="onSubmit()" [formGroup]="addOwnerForm" class="form">
         <div class="inputs">
           <div class="input-container">
-            <label for="identity_card">ID del propietario</label>
+            <label for="identity_card">Owner ID</label>
             <input [ngClass]="{ 'is-invalid': submitted && f.identity_card.errors }" class="input"
                    formControlName="identity_card" id="identity_card" placeholder="ID" type="text"/>
             <div *ngIf="submitted && f.identity_card.errors" class="invalid-feedback">
-              <div *ngIf="f.identity_card.errors.required">El id del propietario es requerido</div>
+              <div *ngIf="f.identity_card.errors.required">Id is required</div>
             </div>
           </div>
 
           <div class="buttons-container">
             <button [disabled]="loading" class="btn-important">
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-              Agregar Propietario
+              Add Owner
             </button>
           </div>
         </div>
