@@ -3,7 +3,7 @@
   <button *ngIf="viewOwners" (click)="onClick()" class="btn-advice">Hide Owners</button>
 
   <div *ngIf="viewOwners">
-    <mat-card *ngFor="let owner of owners">
+    <mat-card class="mtc-owner" *ngFor="let owner of owners">
       <mat-card-content>
         <div>
           <p><b>Owner: </b>{{owner.names}}</p>

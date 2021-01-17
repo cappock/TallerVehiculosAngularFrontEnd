@@ -15,6 +15,7 @@ import { ClientsGuard } from './_helpers/clients.guard';
 import { VehiclesListComponent } from './components/employees/vehicles/vehicles-list/vehicles-list.component';
 import { OwnersViewComponent } from './components/employees/owners/owners-view/owners-view.component';
 import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
+import { RepairDetailComponent } from './components/employees/vehicles/repair-detail/repair-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -50,6 +51,18 @@ const routes: Routes = [
       {
         path: 'vehicle/:plate',
         component: VehicleComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.technician, Role.supervisor] },
+      },
+      {
+        path: 'vehicle/:plate/repair-detail/:repair_id',
+        component: RepairDetailComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.technician, Role.supervisor] },
+      },
+      {
+        path: 'vehicle/:plate/repair-detail',
+        component: RepairDetailComponent,
         canActivate: [AuthGuard],
         data: { roles: [Role.technician, Role.supervisor] },
       },

@@ -1,15 +1,15 @@
 <div class="edit-vehicle-container">
 
-  <p *ngIf="!adding"  class="title">Edit Vehicle</p>
-  
-  <p *ngIf="adding"  class="title">Add Vehicle</p>
+  <p *ngIf="!adding" class="title">Edit Vehicle</p>
+
+  <p *ngIf="adding" class="title">Add Vehicle</p>
 
   <form (submit)="onSubmit()" [formGroup]="vehicleForm" class="form">
     <div class="cols-3">
       <div class="col input-container">
         <label for="plate">Plate</label>
-        <input [ngClass]="{ 'is-invalid': submitted && f.plate.errors }" class="input"
-               formControlName="plate" id="plate" placeholder="placa" type="text"/>
+        <input [ngClass]="{ 'is-invalid': submitted && f.plate.errors }" class="input" formControlName="plate"
+          id="plate" placeholder="placa" type="text" />
         <div *ngIf="submitted && f.plate.errors" class="invalid-feedback">
           <div *ngIf="f.plate.errors.required">Plate is required</div>
         </div>
@@ -17,8 +17,8 @@
 
       <div class="col input-container">
         <label for="model">Model</label>
-        <input [ngClass]="{ 'is-invalid': submitted && f.model.errors }" class="input"
-               formControlName="model" id="model" placeholder="Modelo" type="text"/>
+        <input [ngClass]="{ 'is-invalid': submitted && f.model.errors }" class="input" formControlName="model"
+          id="model" placeholder="Modelo" type="text" />
         <div *ngIf="submitted && f.model.errors" class="invalid-feedback">
           <div *ngIf="f.model.errors.required">Model is required</div>
         </div>
@@ -26,8 +26,8 @@
 
       <div class="col input-container">
         <label for="brand">Brand</label>
-        <input [ngClass]="{ 'is-invalid': submitted && f.brand.errors }" class="input"
-               formControlName="brand" id="brand" placeholder="Marca" type="text"/>
+        <input [ngClass]="{ 'is-invalid': submitted && f.brand.errors }" class="input" formControlName="brand"
+          id="brand" placeholder="Marca" type="text" />
         <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
           <div *ngIf="f.brand.errors.required">Brand is required</div>
         </div>
@@ -37,8 +37,8 @@
     <div class="cols-2">
       <div class="col input-container">
         <label for="color">Color</label>
-        <input [ngClass]="{ 'is-invalid': submitted && f.color.errors }" class="input"
-               formControlName="color" id="color" placeholder="Color" type="text"/>
+        <input [ngClass]="{ 'is-invalid': submitted && f.color.errors }" class="input" formControlName="color"
+          id="color" placeholder="Color" type="text" />
         <div *ngIf="submitted && f.color.errors" class="invalid-feedback">
           <div *ngIf="f.color.errors.required">Color is required</div>
         </div>
@@ -47,7 +47,7 @@
       <div class="col input-container">
         <label for="vehicle_type">Vehicle type</label>
         <input [ngClass]="{ 'is-invalid': submitted && f.vehicle_type.errors }" class="input"
-               formControlName="vehicle_type" id="vehicle_type" placeholder="Tipo de Vehiculo" type="text"/>
+          formControlName="vehicle_type" id="vehicle_type" placeholder="Tipo de Vehiculo" type="text" />
         <div *ngIf="submitted && f.vehicle_type.errors" class="invalid-feedback">
           <div *ngIf="f.vehicle_type.errors.required">Vehicle type is required</div>
         </div>
@@ -69,7 +69,23 @@
         </button>
       </div>
     </div>
-    <div *ngIf="error" class="error-container"><p class="alert-text">{{error}}</p></div>
+    <div *ngIf="error" class="error-container">
+      <p class="alert-text">{{error}}</p>
+    </div>
   </form>
-  <app-owners-list *ngIf="!adding"></app-owners-list>
+  <div class="cols-3">
+    <div class="col input-container">
+      <app-owners-list *ngIf="!adding"></app-owners-list>
+    </div>
+    <div class="col input-container">
+      <div class="btn-repair">
+        <button class="btn-important" routerLink="/employees/vehicle/{{vehicle.plate}}/repair-detail">Add Repair Detail</button>
+      </div>
+    </div>
+    <div class="col input-container">
+      <div class="btn-repair">
+        <button class="btn-important">Repair History</button>
+      </div>
+    </div>
+  </div>
 </div>

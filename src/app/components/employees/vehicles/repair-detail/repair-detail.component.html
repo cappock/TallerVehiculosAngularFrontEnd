@@ -1,0 +1,96 @@
+<div class="edit-Repair-container">
+
+  <p *ngIf="!adding" class="title">Edit Repair</p>
+
+  <p *ngIf="adding" class="title">Add Repair</p>
+
+  <form (submit)="onSubmit()" [formGroup]="repairForm" class="form">
+    <div class="cols-2">
+      <div class="col input-container">
+        <label for="plate">Plate</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.vehicle_id.errors }" class="input" formControlName="vehicle_id"
+          id="vehicle_id" placeholder="placa" type="text" />
+        <div *ngIf="submitted && f.vehicle_id.errors" class="invalid-feedback">
+          <div *ngIf="f.vehicle_id.errors.required">Plate is required</div>
+        </div>
+      </div>
+
+      <div *ngIf="!adding" class="col input-container">
+        <label for="id">ID</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.id.errors }" class="input" formControlName="id" id="id"
+          placeholder="id" type="number" />
+        <div *ngIf="submitted && f.id.errors" class="invalid-feedback">
+          <div *ngIf="f.id.errors.required">ID is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="cols-2">
+      <div class="col input-container">
+        <label for="cost">Cost</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.cost.errors }" class="input" formControlName="cost" id="cost"
+          placeholder="Cost" type="number" />
+        <div *ngIf="submitted && f.cost.errors" class="invalid-feedback">
+          <div *ngIf="f.cost.errors.required">Cost is required</div>
+        </div>
+      </div>
+
+      <div class="col input-container">
+        <label for="state">State</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.state.errors }" class="input" formControlName="state"
+          id="state" placeholder="State" type="text" />
+        <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+          <div *ngIf="f.state.errors.required">State is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="cols-2">
+      <div class="col input-container">
+        <label for="description">Description</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.description.errors }" class="input" formControlName="description"
+          id="state" placeholder="State" type="text" />
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">description is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols-2">
+      <div class="col input-container">
+        <label for="spare_part">Spare Part</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.spare_part.errors }" class="input" formControlName="spare_part"
+          id="spare_part" placeholder="Spare Part" type="text" />
+      </div>
+      <div class="btn-addpart">
+        <button (click)="onAddPart()" class="btn-advice" type='button'>
+          <fa-icon [icon]="faPlusCircle"></fa-icon> Add Part
+        </button>
+      </div>
+    </div>
+
+    <mat-selection-list formControlName="spare_parts">
+      <mat-list-option *ngFor="let part of this.f.spare_parts.value" [value]="part">
+        {{part}}
+      </mat-list-option>
+    </mat-selection-list>
+
+
+    <div class="buttons-container">
+      <button (click)="onEdit()" *ngIf="!editing" class="btn-advice" type='button'>
+        <fa-icon [icon]="faEdit"></fa-icon> Edit
+      </button>
+
+      <div *ngIf="editing" class="buttons-edit-container">
+        <button (click)="onCancel()" *ngIf="!adding" class="btn-advice" type='button'>
+          <fa-icon [icon]="faBan"></fa-icon> Cancel
+        </button>
+        <button [disabled]="loading" class="btn-important">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          <fa-icon [icon]="faSave"></fa-icon> Save Changes
+        </button>
+      </div>
+    </div>
+    <div *ngIf="error" class="error-container">
+      <p class="alert-text">{{error}}</p>
+    </div>
+  </form>
+</div>
