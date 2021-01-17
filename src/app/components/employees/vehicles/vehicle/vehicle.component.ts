@@ -7,6 +7,7 @@ import {VehicleService} from 'src/app/_services/vehicle/vehicle.service';
 
 import {RouterService} from 'src/app/_services/router.service';
 import {faBan, faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vehicle',
@@ -68,7 +69,10 @@ export class VehicleComponent implements OnInit {
         },
         (error: any) => {
           this.routerService.redirectEmployees(`vehicle`);
-          alert('Vehicle Not Found');
+          Swal.fire({
+            icon: 'error',
+            title: 'Vehicle Not Found'
+          });
         });
     }
     this.vehicleForm.disable();
@@ -93,7 +97,11 @@ export class VehicleComponent implements OnInit {
         .pipe(first())
         .subscribe(
           (data) => {
-            alert('Created with success');
+            Swal.fire({
+              icon: 'success',
+              title: 'Created with success'
+            });
+           
             this.routerService.redirectEmployees(`vehicle/${this.vehicle.plate}`);
             this.loading = false;
           },
@@ -110,7 +118,10 @@ export class VehicleComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          alert('Update with success');
+          Swal.fire({
+            icon: 'success',
+            title: 'Update with success'
+          });
           this.loading = false;
         },
         (error) => {

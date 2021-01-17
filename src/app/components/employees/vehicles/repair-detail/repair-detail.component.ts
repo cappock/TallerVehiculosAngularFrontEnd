@@ -6,6 +6,7 @@ import { first, throwIfEmpty } from 'rxjs/operators';
 import { RepairDetail } from 'src/app/_models/repair-detail';
 import { RouterService } from 'src/app/_services/router.service';
 import { RepairDetailService } from 'src/app/_services/vehicle/repair-detail.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -69,7 +70,10 @@ export class RepairDetailComponent implements OnInit {
         },
         (error: any) => {
           this.routerService.redirectEmployees(`vehicles`);
-          alert('Repair Detail Not Found');
+          Swal.fire({
+            icon: 'error',
+            title: 'Repair Detail Not Found'
+          });
         });
     }
     this.repairForm.disable();
@@ -94,7 +98,10 @@ export class RepairDetailComponent implements OnInit {
         .pipe(first())
         .subscribe(
           (data) => {
-            alert('Created with success');
+            Swal.fire({
+              icon: 'success',
+              title: 'Created with success'
+            });
             this.routerService.redirectEmployees(`vehicle/${this.repair.vehicle_id}`);
             this.loading = false;
           },
@@ -112,7 +119,10 @@ export class RepairDetailComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          alert('Update with success');
+          Swal.fire({
+            icon: 'success',
+            title: 'Update with success'
+          });
           this.loading = false;
         },
         (error) => {

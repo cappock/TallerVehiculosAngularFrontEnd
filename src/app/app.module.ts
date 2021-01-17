@@ -30,6 +30,7 @@ import { OwnersViewComponent } from './components/employees/owners/owners-view/o
 import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
 import { RepairDetailComponent } from './components/employees/vehicles/repair-detail/repair-detail.component';
 import {MatListModule} from '@angular/material/list';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {MatListModule} from '@angular/material/list';
     FlexLayoutModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    MatListModule
+    MatListModule,
+    SweetAlert2Module
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

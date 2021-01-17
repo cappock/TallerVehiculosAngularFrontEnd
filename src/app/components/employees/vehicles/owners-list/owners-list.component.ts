@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { Owner } from 'src/app/_models';
 import { RouterService } from 'src/app/_services/router.service';
 import { VehicleService } from 'src/app/_services/vehicle/vehicle.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-owners-list',
@@ -55,7 +56,10 @@ export class OwnersListComponent implements OnInit {
     .subscribe(
       (data) => {
         console.log('Owner Delete');
-        alert('Owner Delete');
+        Swal.fire({
+          icon: 'info',
+          title: 'Owner Delete'
+        });
         this.routerService.reload();
       },
       (error) => {
@@ -84,7 +88,10 @@ export class OwnersListComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log('Owner Add with Succes');
-          alert('Owner Add with Succes');
+          Swal.fire({
+            icon: 'success',
+            title: 'Owner Add with Succes'
+          });
           this.routerService.reload();
         },
         (error) => {
