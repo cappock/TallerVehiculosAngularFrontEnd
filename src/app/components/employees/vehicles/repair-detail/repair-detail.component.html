@@ -46,15 +46,15 @@
     <div class="cols-2">
       <div class="col input-container">
         <label for="description">Description</label>
-        <input [ngClass]="{ 'is-invalid': submitted && f.description.errors }" class="input" formControlName="description"
-          id="state" placeholder="State" type="text" />
+        <input [ngClass]="{ 'is-invalid': submitted && f.description.errors }" class="input"
+          formControlName="description" id="state" placeholder="State" type="text" />
         <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
           <div *ngIf="f.description.errors.required">description is required</div>
         </div>
       </div>
     </div>
 
-    <div class="cols-2">
+    <div class="cols-2" *ngIf="editing">
       <div class="col input-container">
         <label for="spare_part">Spare Part</label>
         <input [ngClass]="{ 'is-invalid': submitted && f.spare_part.errors }" class="input" formControlName="spare_part"
@@ -67,12 +67,15 @@
       </div>
     </div>
 
-    <mat-selection-list formControlName="spare_parts">
-      <mat-list-option *ngFor="let part of this.f.spare_parts.value" [value]="part">
-        {{part}}
-      </mat-list-option>
-    </mat-selection-list>
 
+    <div  class="col input-container">
+      <p  class="subtitle">Spare Parts</p>
+      <mat-selection-list formControlName="spare_parts">
+        <mat-list-option *ngFor="let part of this.f.spare_parts.value" [value]="part">
+          {{part}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
 
     <div class="buttons-container">
       <button (click)="onEdit()" *ngIf="!editing" class="btn-advice" type='button'>

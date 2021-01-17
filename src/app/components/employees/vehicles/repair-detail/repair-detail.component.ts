@@ -56,15 +56,15 @@ export class RepairDetailComponent implements OnInit {
     if (this.repair.vehicle_id && this.repair.id) {
       this.adding = false;
       this.repairService.getRepairDetail(this.repair.vehicle_id,this.repair.id).subscribe((data) => {
-          this.repair = data;
+          this.repair.fillAllData(data);
           this.repairForm = this.formBuilder.group({
             vehicle_id: [this.repair.vehicle_id, Validators.required],
             description: [this.repair.description, Validators.required],
             cost: [this.repair.cost, Validators.required],
-            spare_parts: [this.repair.spare_parts, Validators.required],
+            spare_parts: [this.repair.spare_parts],
             state: [this.repair.state, Validators.required],
             id: [this.repair.id],
-            spare_part: []
+            spare_part: [""]
           });
         },
         (error: any) => {
@@ -83,10 +83,10 @@ export class RepairDetailComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.repairForm.invalid) {
-      console.log(this.repairForm);
       return;
     }
     this.loading = true;
+    console.log(this.repair);
     this.repair.fill(this.repairForm.value);
     if (this.adding === true) {
       this.repairService
@@ -106,6 +106,7 @@ export class RepairDetailComponent implements OnInit {
         );
       return;
     }
+    
     this.repairService
       .update(this.repair.vehicle_id, this.repair)
       .pipe(first())
@@ -126,7 +127,8 @@ export class RepairDetailComponent implements OnInit {
   onEdit(): void {
     this.editing = true;
     this.repairForm.enable();
-    this.f.plate.disable();
+    this.f.vehicle_id.disable();
+    this.f.id.disable();
   }
 
   onCancel(): void {
