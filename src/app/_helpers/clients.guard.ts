@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { AuthenticationService } from '../_services';
 import { AuthOwnerService } from '../_services/owner/auth-owner.service';
 
+
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +28,11 @@ export class ClientsGuard implements CanActivate {
       }
 
       if (currentUser){
-        alert("You are logeed as a employee, please log out and log in again with your client account")
+        Swal.fire({
+          icon: 'info',
+          title: 'Oops...',
+          text: 'You are logeed as a employee, please log out and log in again with your client account'
+        });
         this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
         return false;
       }

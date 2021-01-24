@@ -28,7 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OwnersViewComponent } from './components/employees/owners/owners-view/owners-view.component';
 import { ClientsProfileComponent } from './components/clients/clients-profile/clients-profile.component';
-
+import { RepairDetailComponent } from './components/employees/vehicles/repair-detail/repair-detail.component';
+import {MatListModule} from '@angular/material/list';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ClientsProfileComponent } from './components/clients/clients-profile/cl
     ClientVehiclesComponent,
     ClientsNavbarComponent,
     OwnersViewComponent,
-    ClientsProfileComponent
+    ClientsProfileComponent,
+    RepairDetailComponent
 
   ],
   imports: [
@@ -61,7 +64,9 @@ import { ClientsProfileComponent } from './components/clients/clients-profile/cl
     MatCardModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatListModule,
+    SweetAlert2Module
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

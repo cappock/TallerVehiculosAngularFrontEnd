@@ -41,13 +41,12 @@ export class VehicleService {
   }
 
   update(vehicle: Vehicle){
-    console.log(vehicle)
     return this.http
     .patch<any>(`${environment.apiRest}/api/v1/vehicles/${vehicle.plate}`, vehicle)
     .pipe(
       map((vehicle) => {
         if (vehicle) {
-          console.log('Vehiculo Actualizado Con Exito');
+          console.log('Vehicle update with success');
         }
       })
     );

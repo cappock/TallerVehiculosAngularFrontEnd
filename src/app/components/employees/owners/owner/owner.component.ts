@@ -6,6 +6,7 @@ import { Owner } from 'src/app/_models';
 import { OwnerService } from 'src/app/_services/owner/owner.service';
 import { RouterService } from 'src/app/_services/router.service';
 import {faBan, faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-owner',
@@ -52,7 +53,11 @@ export class OwnerComponent implements OnInit {
       },
       (error : any) => {
         this.routerService.redirectEmployees(`owner`);
-        alert('Owner not Found');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Owner not Found'
+        });
       });
     }
     this.ownerForm = this.formBuilder.group({
@@ -84,7 +89,11 @@ export class OwnerComponent implements OnInit {
         this.ownerService.create(this.owner)
       .pipe(first())
       .subscribe(data => {
-          alert('Created with success');
+        Swal.fire({
+          icon: 'success',
+          title: 'Created with success'
+        });
+         
           this.routerService.redirectEmployees(`owner/${this.owner.identity_card}`)
           this.loading = false;
         },
@@ -98,7 +107,10 @@ export class OwnerComponent implements OnInit {
     this.ownerService.update(this.owner)
     .pipe(first())
     .subscribe(data => {
-        alert('Update with success');
+      Swal.fire({
+        icon: 'success',
+        title: 'Update with success'
+      });
         this.loading = false;
       },
       (error) => {
