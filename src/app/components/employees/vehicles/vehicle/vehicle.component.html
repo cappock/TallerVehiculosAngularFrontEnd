@@ -8,7 +8,7 @@
     <div class="cols-3">
       <div class="col input-container">
         <label for="plate">Plate</label>
-        <input [ngClass]="{ 'is-invalid': submitted && f.plate.errors }" class="input" formControlName="plate"
+        <input oninput="this.value = this.value.toLowerCase()" [ngClass]="{ 'is-invalid': submitted && f.plate.errors }" class="input" formControlName="plate"
                id="plate" placeholder="placa" type="text"/>
         <div *ngIf="submitted && f.plate.errors" class="invalid-feedback">
           <div *ngIf="f.plate.errors.required">Plate is required</div>
@@ -82,14 +82,14 @@
     </div>
     <div class="col input-container">
       <div class="btn-repair">
-        <button class="btn-important" routerLink="/employees/vehicle/{{vehicle.plate}}/repair-detail">
+        <button class="btn-important" *ngIf="!adding" routerLink="/employees/vehicle/{{vehicle.plate}}/repair-detail">
           Add Repair Detail
         </button>
       </div>
     </div>
     <div class="col input-container">
       <div class="btn-repair">
-        <button class="btn-important">Repair History</button>
+        <button class="btn-important" *ngIf="!adding" routerLink="/employees/vehicle/{{vehicle.plate}}/repair-details">Repair History</button>
       </div>
     </div>
   </div>
