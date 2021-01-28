@@ -11,6 +11,10 @@
       <p>Spare parts: <b></b>
         <span *ngFor="let part of item.spare_parts">{{part}}</span>
       </p>
+
+      <button *ngIf="employeeView" class="btn-important" routerLink="/employees/vehicle/{{plate}}/repair-detail/{{item.id}}">
+        <fa-icon [icon]="faEdit"></fa-icon> Edit
+      </button>
     </div>
   </div>
 </div>

@@ -58,6 +58,12 @@ const routes: Routes = [
         data: {roles: [Role.technician, Role.supervisor]},
       },
       {
+        path: 'vehicle/:plate/repair-detail',
+        component: RepairDetailComponent,
+        canActivate: [AuthGuard],
+        data: {roles: [Role.technician, Role.supervisor]},
+      },
+      {
         path: 'vehicle/:plate/repair-detail/:repair_id',
         component: RepairDetailComponent,
         canActivate: [AuthGuard],
