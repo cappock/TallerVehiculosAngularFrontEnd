@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {first} from 'rxjs/operators';
-import {Employee} from 'src/app/_models';
-import {EmployeeService} from 'src/app/_services/employee/employee.service';
-import { Role } from  'src/app/_models';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { Employee } from 'src/app/_models';
+import { EmployeeService } from 'src/app/_services/employee/employee.service';
+import { Role } from 'src/app/_models';
 import Swal from 'sweetalert2';
+import { CustomValidators } from 'src/app/validators/custom-validators';
 
 @Component({
   selector: 'app-signup',
@@ -19,12 +19,10 @@ export class SignupComponent implements OnInit {
   returnUrl: string;
   error = '';
   employee: Employee = new Employee();
-  roles : Array<any> = Object.keys(Role);
+  roles: Array<any> = Object.keys(Role);
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
     private employeeService: EmployeeService
   ) {
   }
@@ -36,14 +34,25 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
+      password: ['', Validators.compose([
+        Validators.required, 
+        CustomValidators.patternValidator(/\d/, { hasNumber: true }),
+        CustomValidators.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+        CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
+        CustomValidators.patternValidator(/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, { hasSpecialCharacters: true }),
+        Validators.minLength(8)])
+      ],
+      confirmPassword: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', Validators.required],
       names: ['', Validators.required],
       surnames: ['', Validators.required],
       email: ['', Validators.required],
       phone: ['', Validators.required],
       role: ['', Validators.required],
       identity_card: ['', Validators.required],
+    }, {
+      // check whether our password and confirm password match
+      validator: CustomValidators.passwordMatchValidator
     });
   }
 
@@ -55,9 +64,9 @@ export class SignupComponent implements OnInit {
 
   onReset() {
     this.signUpForm.reset();
-    }
+  }
 
-  changeRole(e){
+  changeRole(e) {
     this.f.role.setValue(e.target.value, {
       onlySelf: true
     })
@@ -65,6 +74,7 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
+    console.log(this.signUpForm.controls["confirmPassword"].errors)
     // stop here if form is invalid
     if (this.signUpForm.invalid) {
       return;
@@ -94,6 +104,11 @@ export class SignupComponent implements OnInit {
         (error) => {
           console.log(error)
           this.error = error;
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error[0].msg
+          });
           this.loading = false;
         }
       );
