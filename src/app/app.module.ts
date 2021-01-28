@@ -31,6 +31,7 @@ import { ClientsProfileComponent } from './components/clients/clients-profile/cl
 import { RepairDetailComponent } from './components/employees/vehicles/repair-detail/repair-detail.component';
 import {MatListModule} from '@angular/material/list';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { VehicleHistoryComponent } from './components/clients/client-vehicles/vehicle-history/vehicle-history.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ClientsNavbarComponent,
     OwnersViewComponent,
     ClientsProfileComponent,
-    RepairDetailComponent
+    RepairDetailComponent,
+    VehicleHistoryComponent
 
   ],
   imports: [

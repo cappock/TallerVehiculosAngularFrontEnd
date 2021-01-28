@@ -1,9 +1,52 @@
 @import "src/styles/main";
 
-.content {
-    padding: 16px;
-}
+.client-vehicles-container {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 20px;
 
-.content > mat-card {
-    width: 200px;
+  .title {
+    flex: 10;
+    padding-left: 100px;
+  }
+
+  .vehicles-container {
+    flex: 90;
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    flex-direction: row;
+
+    .vehicle {
+      width: 24%;
+      margin-left: 1%;
+      border: 1px solid $grey-light-color;
+      border-radius: 10px;
+      height: 400px;
+
+      .header {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .content {
+        padding: 0 20px 0 20px;
+        .plate {
+          margin-top: 20px;
+          font-size: 40px !important;
+          font-weight: bold;
+        }
+      }
+
+      .footer {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
 }

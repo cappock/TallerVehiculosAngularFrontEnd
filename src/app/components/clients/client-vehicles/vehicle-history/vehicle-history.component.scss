@@ -1,0 +1,19 @@
+@import "src/styles/main";
+
+.history-container {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 20px;
+
+  .title {
+    flex: 10;
+    padding-left: 100px;
+  }
+
+  .items-container {
+    flex: 90;
+  }
+}

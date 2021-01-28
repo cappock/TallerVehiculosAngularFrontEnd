@@ -61,7 +61,7 @@ export class ClientsComponent implements OnInit {
           this.f.code.errors = null;
           this.tokenAcces = true;
           this.loading = false;
-          this.error = '';  
+          this.error = '';
         },
         error => {
           this.error = error;
@@ -81,14 +81,14 @@ export class ClientsComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]); 
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
           this.loading = false;
         });
   }
-  
+
   enterCode(){
     this.tokenAcces= true;
   }
