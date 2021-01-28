@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faBan, faEdit, faSave, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import { first, throwIfEmpty } from 'rxjs/operators';
+import { first} from 'rxjs/operators';
 import { RepairDetail } from 'src/app/_models/repair-detail';
 import { RouterService } from 'src/app/_services/router.service';
 import { RepairDetailService } from 'src/app/_services/vehicle/repair-detail.service';
@@ -15,7 +15,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./repair-detail.component.scss']
 })
 export class RepairDetailComponent implements OnInit {
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
   repairForm: FormGroup;
   faSave = faSave;
