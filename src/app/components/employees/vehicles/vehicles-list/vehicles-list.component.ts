@@ -19,7 +19,10 @@ export class VehiclesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("hola");
     this.vehicleService.getAll().subscribe(vehicles => {
+
+      console.log(vehicles);
       this.vehiclesList = vehicles;
     });
 

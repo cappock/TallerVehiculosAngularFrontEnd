@@ -17,6 +17,10 @@ export class RepairDetailService {
   }
 
   getAll(plate : string){
+    return this.http.get<Array<RepairDetail>>(`${environment.apiRest}/api/v1/owner/me/vehicles/${plate}/reparation-details`);
+  }
+
+  getAllEmployees(plate : string){
     return this.http.get<Array<RepairDetail>>(`${environment.apiRest}/api/v1/vehicles/${plate}/reparation-details`);
   }
 

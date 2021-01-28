@@ -64,8 +64,8 @@ const routes: Routes = [
         data: {roles: [Role.technician, Role.supervisor]},
       },
       {
-        path: 'vehicle/:plate/repair-detail',
-        component: RepairDetailComponent,
+        path: 'vehicle/:plate/repair-details',
+        component: VehicleHistoryComponent,
         canActivate: [AuthGuard],
         data: {roles: [Role.technician, Role.supervisor]},
       },
