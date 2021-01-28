@@ -1,0 +1,32 @@
+@import "src/styles/main";
+
+.history-container {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 20px;
+
+  .title {
+    flex: 10;
+    padding-left: 100px;
+  }
+
+  .items-container {
+    flex: 90;
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    flex-direction: row;
+
+    .item {
+      width: 24%;
+      margin-left: 1%;
+      border: 1px solid $grey-light-color;
+      border-radius: 10px;
+      height: 400px;
+      padding: 20px;
+    }
+  }
+}

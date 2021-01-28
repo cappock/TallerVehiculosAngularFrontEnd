@@ -1,7 +1,6 @@
 @import "../../../../../styles/main";
 
-
-.edit-vehicle-container {
+.edit-Repair-container {
   height: 100%;
   overflow-y: auto;
   padding: 20px 10% 50px 10%;
@@ -26,6 +25,13 @@
       .buttons-edit-container {
         display: flex;
       }
+    }
+
+    .btn-addpart {
+      margin: 20px;
+      width: 50%;
+      display: flex;
+      justify-content: center;
     }
   }
 }

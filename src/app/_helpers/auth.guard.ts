@@ -7,10 +7,10 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Employee } from '../_models';
 import { AuthenticationService } from '../_services';
-import { EmployeeService } from '../_services/employee/employee.service';
 import { AuthOwnerService } from '../_services/owner/auth-owner.service';
+
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +19,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private authOwnerService: AuthOwnerService,
-    private employeeService: EmployeeService
+    private authOwnerService: AuthOwnerService
   ) {}
 
   canActivate(
@@ -46,9 +45,11 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     if (currentOwner) {
-      alert(
-        'You are logeed as a client, please log out and log in again with your management account'
-      );
+      Swal.fire({
+        icon: 'info',
+        title: 'Oops...',
+        text: 'You are logeed as a client, please log out and log in again with your management account'
+      });
       this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
       return false;
     }

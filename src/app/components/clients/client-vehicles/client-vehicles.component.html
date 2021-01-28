@@ -1,19 +1,21 @@
-<div class="content">
-    <h4 class="title"> My Vehicles</h4>
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let vehicle of vehiclesList">
-            <mat-card class="mat-elevation-z4">
-                <mat-card-header>
-                    <mat-card-title>Plate #{{vehicle.plate}}</mat-card-title>
-                </mat-card-header>
+<div class="client-vehicles-container">
+  <h4 class="title"> My Vehicles</h4>
 
-                <fa-icon [icon]="faCar" size="6x"></fa-icon>
-                <mat-card-content>
-                    <p>
-                        This {{vehicle.vehicle_type}} {{vehicle.brand}} model {{vehicle.model}} color {{vehicle.color}}
-                    </p>
-                </mat-card-content>
-            </mat-card>
-        </div>
+  <div class="vehicles-container">
+    <div *ngFor="let vehicle of vehiclesList" class="vehicle">
+      <div class="header">
+        <fa-icon [icon]="faCar" size="10x"></fa-icon>
+      </div>
+      <div class="content">
+        <p class="plate">#{{vehicle.plate}}</p>
+        <p><b>Type: </b> {{vehicle.vehicle_type}}</p>
+        <p><b>Brand: </b> {{vehicle.brand}}</p>
+        <p><b>Model: </b> {{vehicle.model}}</p>
+        <p><b>Color: </b> {{vehicle.color}}</p>
+      </div>
+      <div class="footer">
+        <button class="btn-important" routerLink="/clients/history/{{vehicle.plate}}">View history</button>
+      </div>
     </div>
+  </div>
 </div>

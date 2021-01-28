@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import {AuthOwnerService} from 'src/app/_services/owner/auth-owner.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clients',
@@ -52,11 +53,15 @@ export class ClientsComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          alert("Look your email to view the code, that we just send to you");
+          Swal.fire({
+            icon: 'info',
+            title: 'Code',
+            text: 'Look your email to view the code, that we just send to you'
+          });
           this.f.code.errors = null;
           this.tokenAcces = true;
           this.loading = false;
-          this.error = '';  
+          this.error = '';
         },
         error => {
           this.error = error;
@@ -76,14 +81,14 @@ export class ClientsComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]); 
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
           this.loading = false;
         });
   }
-  
+
   enterCode(){
     this.tokenAcces= true;
   }

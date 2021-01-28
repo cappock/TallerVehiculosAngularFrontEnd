@@ -5,6 +5,7 @@ import {first} from 'rxjs/operators';
 import {Employee} from 'src/app/_models';
 import {EmployeeService} from 'src/app/_services/employee/employee.service';
 import { Role } from  'src/app/_models';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -82,7 +83,10 @@ export class SignupComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          alert('Sign Up with succes');
+          Swal.fire({
+            icon: 'success',
+            title: 'Sign Up with succes'
+          });
           this.loading = false;
           // window.location.reload();
           // this.router.navigate([this.returnUrl]);
